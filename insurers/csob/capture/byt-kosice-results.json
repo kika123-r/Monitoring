@@ -1,0 +1,44 @@
+[
+  {
+    "balik": "Klasik",
+    "spoluucast": "0 €",
+    "cena": "105,60",
+    "coverage": [
+      "Živelná udalosť",
+      "Odcudzenie",
+      "Rozbitie skla",
+      "Základné asistenčné služby – peňažné plnenie"
+    ],
+    "odporucana_suma_nehnutelnost": "149813"
+  },
+  {
+    "balik": "Štandard",
+    "spoluucast": "0 €",
+    "cena": "118,54",
+    "coverage": [
+      "Živelná udalosť",
+      "Odcudzenie",
+      "Rozbitie skla",
+      "Vandalizmus",
+      "Skrat elektromotorov",
+      "Základné asistenčné služby – peňažné plnenie"
+    ],
+    "odporucana_suma_nehnutelnost": "149813"
+  },
+  {
+    "balik": "Extra",
+    "spoluucast": "0 €",
+    "cena": "145,44",
+    "coverage": [
+      "Živelná udalosť",
+      "Odcudzenie",
+      "Rozbitie skla",
+      "Vandalizmus",
+      "Skrat elektromotorov",
+      "Najvýhodnejšie limity poistného plnenia",
+      "Extra krytie poistných rizík",
+      "Rozšírené asistenčné služby – peňažné plnenie"
+    ],
+    "odporucana_suma_nehnutelnost": "149813"
+  }
+]
