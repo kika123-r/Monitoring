@@ -1,0 +1,30 @@
+[
+  {
+    "balik": "Základné riziká",
+    "spoluucast": "0 €",
+    "cena": "39,68",
+    "coverage": [
+      "Požiar, výbuch, víchrica, krupobitie, priamy úder blesku, pád lietadla, imlózia",
+      "Asistenčné služby 24/7"
+    ],
+    "odporucana_suma_nehnutelnost": "67684",
+    "limit": ""
+  },
+  {
+    "balik": "Komplet (všetky pripoistenia)",
+    "spoluucast": "0 €",
+    "cena": "120,23",
+    "coverage": [
+      "Základné riziká",
+      "Prírodné katastrofy",
+      "Ostatné živelné riziká",
+      "Škody z vody",
+      "Ľudská zlomyseľnosť (krádež, vandalizmus, rozbitie skla)",
+      "Drobnosti pre domácnosť",
+      "Drobnosti pre nehnuteľnosť",
+      "Skrat"
+    ],
+    "odporucana_suma_nehnutelnost": "67684",
+    "limit": ""
+  }
+]
