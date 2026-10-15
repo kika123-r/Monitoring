@@ -1,0 +1,82 @@
+[
+  {
+    "balik": "Gold",
+    "spoluucast": "0 €",
+    "cena": "207,85",
+    "limit": "200000",
+    "coverage": [
+      "Oheň",
+      "Výbuch",
+      "Blesk",
+      "Pád predmetov",
+      "Víchrica",
+      "Krupobitie",
+      "Zosuv pôdy",
+      "Sneh a mráz",
+      "Zemetrasenie",
+      "Náraz vozidla",
+      "Únik vody",
+      "Povodeň a záplava, spätné vystúpenie vody",
+      "Krádež vlámaním a lúpež",
+      "Skrat",
+      "Sklo",
+      "Zatečenie vody",
+      "Vandalizmus",
+      "Rozšírená asistencia"
+    ],
+    "tolerancia": "30%",
+    "uplatnena_zlava": "-",
+    "mozne_zlavy": "obchodná zľava 5% a 10% (Discount_select, neuplatnená)"
+  },
+  {
+    "balik": "Silver",
+    "spoluucast": "0 €",
+    "cena": "201,92",
+    "limit": "200000",
+    "coverage": [
+      "Oheň",
+      "Výbuch",
+      "Blesk",
+      "Pád predmetov",
+      "Víchrica",
+      "Krupobitie",
+      "Zosuv pôdy",
+      "Sneh a mráz",
+      "Zemetrasenie",
+      "Náraz vozidla",
+      "Únik vody",
+      "Povodeň a záplava, spätné vystúpenie vody",
+      "Krádež vlámaním a lúpež",
+      "Skrat",
+      "Sklo",
+      "Základná asistencia"
+    ],
+    "tolerancia": "30%",
+    "uplatnena_zlava": "-",
+    "mozne_zlavy": "obchodná zľava 5% a 10% (Discount_select, neuplatnená)"
+  },
+  {
+    "balik": "Bronze",
+    "spoluucast": "0 €",
+    "cena": "151,84",
+    "limit": "200000",
+    "coverage": [
+      "Oheň",
+      "Výbuch",
+      "Blesk",
+      "Pád predmetov",
+      "Víchrica",
+      "Krupobitie",
+      "Zosuv pôdy",
+      "Sneh a mráz",
+      "Zemetrasenie",
+      "Náraz vozidla",
+      "Únik vody",
+      "Povodeň a záplava, spätné vystúpenie vody",
+      "Základná asistencia"
+    ],
+    "tolerancia": "30%",
+    "uplatnena_zlava": "-",
+    "mozne_zlavy": "obchodná zľava 5% a 10% (Discount_select, neuplatnená)"
+  }
+]

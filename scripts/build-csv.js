@@ -60,9 +60,9 @@ function run(insurer, profileId, poistovnaName, extraInfo) {
       meta.plocha, meta.loggia, meta.rok, meta.material, meta.ucel,
       meta.suma_nehnutelnost, meta.suma_domacnost, r.odporucana_suma_nehnutelnost,
       poistovnaName, r.balik, (r.coverage || []).join('\n'), r.cena ? r.cena + ' €' : '',
-      'neuvedené', r.spoluucast,
+      r.tolerancia || 'neuvedené', r.spoluucast,
       r.limit, r.limit, // zodpovednosť z vlastníctva / z občianskeho života (single shared "limit" control)
-      '', '-', '-', extraInfo || '',
+      r.doplnkove || '', r.uplatnena_zlava || '-', r.mozne_zlavy || '-', extraInfo || '',
     ];
     lines.push(row.map(csvEscape).join(','));
   }
