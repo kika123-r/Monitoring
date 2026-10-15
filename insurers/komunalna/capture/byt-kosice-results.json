@@ -1,0 +1,44 @@
+[
+  {
+    "balik": "Živel",
+    "spoluucast": "0 €",
+    "cena": "69,52",
+    "coverage": [
+      "Združený živel a atmosférické zrážky",
+      "Poistenie vedľajších budov",
+      "Stavebný materiál",
+      "Náklady na náhradné ubytovanie"
+    ],
+    "odporucana_suma_nehnutelnost": "54515"
+  },
+  {
+    "balik": "Optimum",
+    "spoluucast": "0 €",
+    "cena": "79,60",
+    "coverage": [
+      "Združený živel a atmosférické zrážky",
+      "Krádež, lúpež, vandalizmus",
+      "Poistenie vedľajších budov",
+      "Stavebný materiál",
+      "Zodpovednosť z vlastníctva nehnuteľnosti",
+      "Náklady na náhradné ubytovanie"
+    ],
+    "odporucana_suma_nehnutelnost": "54515"
+  },
+  {
+    "balik": "Excelent",
+    "spoluucast": "0 €",
+    "cena": "95,79",
+    "coverage": [
+      "Združený živel a atmosférické zrážky",
+      "Krádež, lúpež, vandalizmus",
+      "Poistenie vedľajších budov",
+      "Stavebný materiál",
+      "Búrlivý vietor",
+      "Asistenčné služby",
+      "Zodpovednosť z vlastníctva nehnuteľnosti",
+      "Náklady na náhradné ubytovanie"
+    ],
+    "odporucana_suma_nehnutelnost": "54515"
+  }
+]
