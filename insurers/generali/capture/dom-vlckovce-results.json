@@ -1,0 +1,23 @@
+[
+  {
+    "balik": "Standard",
+    "spoluucast": "0 €",
+    "cena": "301,15",
+    "odporucana_suma_nehnutelnost": "232870",
+    "limit": "50000"
+  },
+  {
+    "balik": "Comfort",
+    "spoluucast": "0 €",
+    "cena": "305,86",
+    "odporucana_suma_nehnutelnost": "232870",
+    "limit": "100000"
+  },
+  {
+    "balik": "Exclusive",
+    "spoluucast": "0 €",
+    "cena": "317,29",
+    "odporucana_suma_nehnutelnost": "232870",
+    "limit": "200000"
+  }
+]

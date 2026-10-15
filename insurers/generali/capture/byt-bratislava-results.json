@@ -1,0 +1,53 @@
+[
+  {
+    "balik": "Standard",
+    "spoluucast": "0 €",
+    "cena": "221,16",
+    "coverage": [
+      "Požiar",
+      "Živel",
+      "Voda z vodovodného zariadenia",
+      "Povodeň a záplava",
+      "Spodná voda",
+      "Poškodenie vecí skratom",
+      "Zodpovednosť z vlastníctva a/alebo prenájmu nehnuteľnosti (50 000 €)",
+      "Asistenčné služby"
+    ],
+    "odporucana_suma_nehnutelnost": "227500",
+    "limit": "50000"
+  },
+  {
+    "balik": "Comfort",
+    "spoluucast": "0 €",
+    "cena": "225,77",
+    "coverage": [
+      "Požiar",
+      "Živel",
+      "Voda z vodovodného zariadenia",
+      "Povodeň a záplava",
+      "Spodná voda",
+      "Poškodenie vecí skratom",
+      "Zodpovednosť z vlastníctva a/alebo prenájmu nehnuteľnosti (100 000 €)",
+      "Asistenčné služby"
+    ],
+    "odporucana_suma_nehnutelnost": "227500",
+    "limit": "100000"
+  },
+  {
+    "balik": "Exclusive",
+    "spoluucast": "0 €",
+    "cena": "241,10",
+    "coverage": [
+      "Požiar",
+      "Živel",
+      "Voda z vodovodného zariadenia",
+      "Povodeň a záplava",
+      "Spodná voda",
+      "Poškodenie vecí skratom",
+      "Zodpovednosť z vlastníctva a/alebo prenájmu nehnuteľnosti (200 000 €)",
+      "Asistenčné služby"
+    ],
+    "odporucana_suma_nehnutelnost": "227500",
+    "limit": "200000"
+  }
+]
