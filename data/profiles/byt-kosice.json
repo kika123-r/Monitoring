@@ -1,0 +1,18 @@
+{
+  "profil_id": "byt-kosice",
+  "typ_nehnutelnosti": "Byt",
+  "poschodie": 4,
+  "prizemie_alebo_vrchne_poschodie": "nie",
+  "mesto": "Košice",
+  "ulica": "Ostravská",
+  "cislo_supisne_cislo": "1014/12",
+  "psc": null,
+  "podlahova_plocha_m2": 39,
+  "loggia_balkon_terasa_m2": 0,
+  "rok_kolaudacie": 1979,
+  "material": "Panel",
+  "ucel_vyuzitia": "bývanie",
+  "poistna_suma_nehnutelnost": 150000,
+  "poistna_suma_domacnost": 20000,
+  "mena": "EUR"
+}

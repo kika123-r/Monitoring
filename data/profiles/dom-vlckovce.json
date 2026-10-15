@@ -1,0 +1,17 @@
+{
+  "profil_id": "dom-vlckovce",
+  "typ_nehnutelnosti": "Dom",
+  "typ_strechy": "rovná",
+  "pocet_podlazi": 2,
+  "mesto": "Vlčkovce",
+  "ulica": "Vlčkovce",
+  "cislo_psc": "447, 919 23",
+  "podlahova_plocha_m2": 110,
+  "loggia_balkon_terasa_m2": 20,
+  "rok_kolaudacie": 2023,
+  "material": "Tehla",
+  "ucel_vyuzitia": "bývanie",
+  "poistna_suma_nehnutelnost": 300000,
+  "poistna_suma_domacnost": 30000,
+  "mena": "EUR"
+}

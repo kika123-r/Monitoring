@@ -1,0 +1,17 @@
+{
+  "profil_id": "dom-male-dvorniky",
+  "typ_nehnutelnosti": "Dom",
+  "typ_strechy": "šikmá",
+  "pocet_podlazi": 2,
+  "mesto": "Malé Dvorníky",
+  "ulica": "Krátka",
+  "cislo_psc": "389/10, 929 01",
+  "podlahova_plocha_m2": 95,
+  "loggia_balkon_terasa_m2": 65,
+  "rok_kolaudacie": 2023,
+  "material": "Tehla",
+  "ucel_vyuzitia": "bývanie",
+  "poistna_suma_nehnutelnost": 200000,
+  "poistna_suma_domacnost": 25000,
+  "mena": "EUR"
+}
