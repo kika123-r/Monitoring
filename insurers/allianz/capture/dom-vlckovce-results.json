@@ -1,0 +1,92 @@
+[
+  {
+    "balik": "Comfort",
+    "spoluucast": "0 €",
+    "cena": "174,12",
+    "limit": "100000",
+    "coverage": [
+      "Náklady na opravu alebo na obstaranie vecí poškodených alebo zničených živelnými rizikami, ohňom alebo podobnými rizikami.",
+      "24/7 asistenčné služby (napr. vodoinštalatérske práce), náhradné ubytovanie, ak je Vaša domácnosť po poistnej udalosti neobývateľná.",
+      "Zodpovednosť za škodu spôsobenú na veci alebo na zdraví inej osoby.",
+      "Vodovodná škoda a rozbitie skla.",
+      "Krádež, poškodenie alebo zničenie vecí pri pokuse o krádež alebo vandalizme.",
+      "Poškodenie spôsobené skratom alebo prepätím."
+    ],
+    "odporucana_suma_nehnutelnost": "140000"
+  },
+  {
+    "balik": "Comfort",
+    "spoluucast": "100 €",
+    "cena": "158,64",
+    "limit": "100000",
+    "coverage": [
+      "Náklady na opravu alebo na obstaranie vecí poškodených alebo zničených živelnými rizikami, ohňom alebo podobnými rizikami.",
+      "24/7 asistenčné služby (napr. vodoinštalatérske práce), náhradné ubytovanie, ak je Vaša domácnosť po poistnej udalosti neobývateľná.",
+      "Zodpovednosť za škodu spôsobenú na veci alebo na zdraví inej osoby.",
+      "Vodovodná škoda a rozbitie skla.",
+      "Krádež, poškodenie alebo zničenie vecí pri pokuse o krádež alebo vandalizme.",
+      "Poškodenie spôsobené skratom alebo prepätím."
+    ],
+    "odporucana_suma_nehnutelnost": "140000"
+  },
+  {
+    "balik": "Extra",
+    "spoluucast": "0 €",
+    "cena": "236,40",
+    "limit": "100000",
+    "coverage": [
+      "Náklady na opravu alebo na obstaranie vecí poškodených alebo zničených živelnými rizikami, ohňom alebo podobnými rizikami.",
+      "24/7 asistenčné služby (napr. vodoinštalatérske práce), náhradné ubytovanie, ak je Vaša domácnosť po poistnej udalosti neobývateľná.",
+      "Zodpovednosť za škodu spôsobenú na veci alebo na zdraví inej osoby.",
+      "Vodovodná škoda a rozbitie skla.",
+      "Krádež, poškodenie alebo zničenie vecí pri pokuse o krádež alebo vandalizme.",
+      "Poškodenie spôsobené skratom alebo prepätím."
+    ],
+    "odporucana_suma_nehnutelnost": "140000"
+  },
+  {
+    "balik": "Extra",
+    "spoluucast": "100 €",
+    "cena": "216,84",
+    "limit": "100000",
+    "coverage": [
+      "Náklady na opravu alebo na obstaranie vecí poškodených alebo zničených živelnými rizikami, ohňom alebo podobnými rizikami.",
+      "24/7 asistenčné služby (napr. vodoinštalatérske práce), náhradné ubytovanie, ak je Vaša domácnosť po poistnej udalosti neobývateľná.",
+      "Zodpovednosť za škodu spôsobenú na veci alebo na zdraví inej osoby.",
+      "Vodovodná škoda a rozbitie skla.",
+      "Krádež, poškodenie alebo zničenie vecí pri pokuse o krádež alebo vandalizme.",
+      "Poškodenie spôsobené skratom alebo prepätím."
+    ],
+    "odporucana_suma_nehnutelnost": "140000"
+  },
+  {
+    "balik": "Max",
+    "spoluucast": "0 €",
+    "cena": "303,36",
+    "limit": "100000",
+    "coverage": [
+      "Náklady na opravu alebo na obstaranie vecí poškodených alebo zničených živelnými rizikami, ohňom alebo podobnými rizikami.",
+      "24/7 asistenčné služby (napr. vodoinštalatérske práce), náhradné ubytovanie, ak je Vaša domácnosť po poistnej udalosti neobývateľná.",
+      "Zodpovednosť za škodu spôsobenú na veci alebo na zdraví inej osoby.",
+      "Vodovodná škoda a rozbitie skla.",
+      "Krádež, poškodenie alebo zničenie vecí pri pokuse o krádež alebo vandalizme.",
+      "Poškodenie spôsobené skratom alebo prepätím."
+    ],
+    "odporucana_suma_nehnutelnost": "140000"
+  },
+  {
+    "balik": "Max",
+    "spoluucast": "100 €",
+    "cena": "277,20",
+    "limit": "100000",
+    "coverage": [
+      "Náklady na opravu alebo na obstaranie vecí poškodených alebo zničených živelnými rizikami, ohňom alebo podobnými rizikami.",
+      "24/7 asistenčné služby (napr. vodoinštalatérske práce), náhradné ubytovanie, ak je Vaša domácnosť po poistnej udalosti neobývateľná.",
+      "Zodpovednosť za škodu spôsobenú na veci alebo na zdraví inej osoby.",
+      "Vodovodná škoda a rozbitie skla.",
+      "Krádež, poškodenie alebo zničenie vecí pri pokuse o krádež alebo vandalizme.",
+      "Poškodenie spôsobené skratom alebo prepätím."
+    ],
+    "odporucana_suma_nehnutelnost": "140000"
+  }
+]
