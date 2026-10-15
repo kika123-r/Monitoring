@@ -1,0 +1,45 @@
+[
+  {
+    "balik": "Prima",
+    "spoluucast": "0 €",
+    "cena": "109,23",
+    "coverage": [
+      "Združený živel a atmosférické zrážky",
+      "Búrlivý vietor",
+      "Asistenčné služby"
+    ],
+    "odporucana_suma_nehnutelnost": "121471"
+  },
+  {
+    "balik": "Optimum",
+    "spoluucast": "0 €",
+    "cena": "128,08",
+    "coverage": [
+      "Združený živel a atmosférické zrážky",
+      "Búrlivý vietor",
+      "Odcudzenie, vandalizmus",
+      "Skrat elektromotorov",
+      "Prepätie, podpätie",
+      "Poškodenie skla",
+      "Zodpovednosť za škodu",
+      "Asistenčné služby"
+    ],
+    "odporucana_suma_nehnutelnost": "121471"
+  },
+  {
+    "balik": "Excelent",
+    "spoluucast": "0 €",
+    "cena": "167,04",
+    "coverage": [
+      "Združený živel a atmosférické zrážky",
+      "Búrlivý vietor",
+      "Odcudzenie, vandalizmus",
+      "Skrat elektromotorov",
+      "Prepätie, podpätie",
+      "Poškodenie skla",
+      "Zodpovednosť za škodu",
+      "Asistenčné služby"
+    ],
+    "odporucana_suma_nehnutelnost": "121471"
+  }
+]
