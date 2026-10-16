@@ -2,7 +2,7 @@
 // Usage: node scripts/build-csv.js <insurer> <profileId> <poistovnaDisplayName>
 const fs = require('fs');
 
-const DATE = '2026-10-15';
+const DATE = process.env.COLLECTION_DATE || new Date().toISOString().slice(0, 10);
 
 const PROFILE_META = {
   'byt-bratislava': {
