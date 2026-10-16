@@ -62,7 +62,7 @@ function run(insurer, profileId, poistovnaName, extraInfo) {
       poistovnaName, r.balik, (r.coverage || []).join('\n'), r.cena ? r.cena + ' €' : '',
       r.tolerancia || 'neuvedené', r.spoluucast,
       r.limit, r.limit, // zodpovednosť z vlastníctva / z občianskeho života (single shared "limit" control)
-      r.doplnkove || '', r.uplatnena_zlava || '-', r.mozne_zlavy || '-', extraInfo || '',
+      r.doplnkove || '', r.uplatnena_zlava || '-', r.mozne_zlavy || '-', r.doplnujuce_info || extraInfo || '',
     ];
     lines.push(row.map(csvEscape).join(','));
   }

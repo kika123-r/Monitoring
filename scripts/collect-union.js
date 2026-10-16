@@ -160,10 +160,11 @@ async function run(profileId) {
     const estateSumInput = page.locator('input').first();
     const odporucanaSuma = (await estateSumInput.inputValue()).replace(/\s/g, '');
     log('odporúčaná poistná suma nehnuteľnosť:', odporucanaSuma);
-    await estateSumInput.click({ clickCount: 3 });
-    await page.keyboard.press('Backspace');
-    await estateSumInput.type(String(p.suma_nehnutelnost), { delay: 60 });
+    // .fill() sets the value atomically; typing char-by-char into this masked
+    // field can scramble the digits (confirmed bug elsewhere, e.g. Generali).
+    await estateSumInput.fill(String(p.suma_nehnutelnost));
     await page.waitForTimeout(500);
+    log('estate sum input value after fill:', await estateSumInput.inputValue().catch(() => '?'));
     await page.screenshot({ path: `${outDir}/${profileId}-step4.png`, fullPage: true });
 
     await page.getByText('Pokračovať', { exact: true }).click();

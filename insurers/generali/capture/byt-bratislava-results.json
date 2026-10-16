@@ -2,7 +2,7 @@
   {
     "balik": "Standard",
     "spoluucast": "0 €",
-    "cena": "221,16",
+    "cena": "94,81",
     "coverage": [
       "Požiar",
       "Živel",
@@ -13,13 +13,12 @@
       "Zodpovednosť z vlastníctva a/alebo prenájmu nehnuteľnosti (50 000 €)",
       "Asistenčné služby"
     ],
-    "odporucana_suma_nehnutelnost": "227500",
-    "limit": "50000"
+    "odporucana_suma_nehnutelnost": "227500"
   },
   {
     "balik": "Comfort",
     "spoluucast": "0 €",
-    "cena": "225,77",
+    "cena": "99,41",
     "coverage": [
       "Požiar",
       "Živel",
@@ -30,13 +29,12 @@
       "Zodpovednosť z vlastníctva a/alebo prenájmu nehnuteľnosti (100 000 €)",
       "Asistenčné služby"
     ],
-    "odporucana_suma_nehnutelnost": "227500",
-    "limit": "100000"
+    "odporucana_suma_nehnutelnost": "227500"
   },
   {
     "balik": "Exclusive",
     "spoluucast": "0 €",
-    "cena": "241,10",
+    "cena": "114,74",
     "coverage": [
       "Požiar",
       "Živel",
@@ -47,7 +45,6 @@
       "Zodpovednosť z vlastníctva a/alebo prenájmu nehnuteľnosti (200 000 €)",
       "Asistenčné služby"
     ],
-    "odporucana_suma_nehnutelnost": "227500",
-    "limit": "200000"
+    "odporucana_suma_nehnutelnost": "227500"
   }
 ]

@@ -126,11 +126,11 @@ async function run(profileId) {
     await page.waitForTimeout(2500);
     log('step5 url:', page.url());
     // "Návrh poistnej sumy domácnosti" - override recommended household sum
+    // (.fill() sets it atomically; typing char-by-char can scramble these masked fields)
     const homeSumInput = page.locator('input').first();
-    await homeSumInput.click({ clickCount: 3 });
-    await page.keyboard.press('Backspace');
-    await homeSumInput.type(String(p.suma_domacnost), { delay: 60 });
+    await homeSumInput.fill(String(p.suma_domacnost));
     await page.waitForTimeout(400);
+    log('household sum input value after fill:', await homeSumInput.inputValue().catch(() => '?'));
     await page.getByText('Pokračovať', { exact: true }).click();
     await page.waitForTimeout(2500);
     log('step6 url:', page.url());
@@ -151,30 +151,29 @@ async function run(profileId) {
 
     await page.getByText('Upraviť poistnú sumu', { exact: true }).first().click();
     await page.waitForTimeout(800);
-    const modalInput = page.locator('input:visible').first();
-    await modalInput.click({ clickCount: 3 });
-    await page.keyboard.press('Backspace');
-    await modalInput.type(String(p.suma_nehnutelnost), { delay: 60 });
-    await page.waitForTimeout(300);
+    // Whether a separate text box or only the range slider is present in the DOM
+    // varies between page loads, and typing char-by-char into the masked text box
+    // scrambles the digits (e.g. "300000" became "593057"); setting the value via
+    // JS + dispatching input/change events works reliably either way.
+    const modalValAfter = await page.evaluate((val) => {
+      const inputs = Array.from(document.querySelectorAll('input')).filter(el => el.offsetParent !== null);
+      const target = inputs.find(el => el.type !== 'range') || inputs.find(el => el.id === 'insuredAmountBuilding_input');
+      if (!target) return null;
+      const setter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, 'value').set;
+      setter.call(target, String(val));
+      target.dispatchEvent(new Event('input', { bubbles: true }));
+      target.dispatchEvent(new Event('change', { bubbles: true }));
+      return target.value;
+    }, p.suma_nehnutelnost);
+    log('nehnutelnost modal input value after set:', modalValAfter);
     await page.keyboard.press('Tab');
     await page.waitForTimeout(300);
     await page.locator('div.content:visible', { hasText: 'Uložiť a zavrieť' }).click();
     await page.waitForTimeout(1500);
 
-    // switch to "Poistenie domácnosti" tab and set its sum too
-    await page.getByText('Poistenie domácnosti', { exact: true }).click({ force: true });
-    await page.waitForTimeout(1200);
-    await page.getByText('Upraviť poistnú sumu', { exact: true }).first().click();
-    await page.waitForTimeout(800);
-    const modalInput2 = page.locator('input:visible').first();
-    await modalInput2.click({ clickCount: 3 });
-    await page.keyboard.press('Backspace');
-    await modalInput2.type(String(p.suma_domacnost), { delay: 60 });
-    await page.waitForTimeout(300);
-    await page.keyboard.press('Tab');
-    await page.waitForTimeout(300);
-    await page.locator('div.content:visible', { hasText: 'Uložiť a zavrieť' }).click();
-    await page.waitForTimeout(1500);
+    // Household sum was already set earlier via "Návrh poistnej sumy domácnosti"
+    // (step5); the "Poistenie domácnosti" tab here is disabled at this point in
+    // the flow, so there is nothing further to do for it on this page.
 
     // back to "Poistenie nehnuteľnosti" tab to read final package table
     await page.getByText('Poistenie nehnuteľnosti', { exact: true }).click({ force: true });
@@ -195,12 +194,16 @@ async function run(profileId) {
       Comfort: ['Požiar', 'Živel', 'Voda z vodovodného zariadenia', 'Povodeň a záplava', 'Spodná voda', 'Poškodenie vecí skratom', 'Zodpovednosť z vlastníctva a/alebo prenájmu nehnuteľnosti (100 000 €)', 'Asistenčné služby'],
       Exclusive: ['Požiar', 'Živel', 'Voda z vodovodného zariadenia', 'Povodeň a záplava', 'Spodná voda', 'Poškodenie vecí skratom', 'Zodpovednosť z vlastníctva a/alebo prenájmu nehnuteľnosti (200 000 €)', 'Asistenčné služby'],
     };
+    const sumaClampNote = Math.abs(Number(modalValAfter) - p.suma_nehnutelnost) > 1000
+      ? `Kalkulačka nedovolí poistnú sumu nižšiu ako jej vlastné minimum (80 % odporúčanej sumy); reálne nastavená suma bola ${modalValAfter} € namiesto cieľových ${p.suma_nehnutelnost} €.`
+      : '';
     const results = packages.map((pkg, i) => ({
       balik: pkg,
       spoluucast: '0 €',
       cena: prices[i],
       coverage: coverageByPackage[pkg],
       odporucana_suma_nehnutelnost: odporucanaSuma,
+      doplnujuce_info: sumaClampNote,
     }));
     fs.writeFileSync(`${outDir}/${profileId}-results.json`, JSON.stringify(results, null, 2));
     log('results:', JSON.stringify(results));

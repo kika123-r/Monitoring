@@ -2,7 +2,7 @@
   {
     "balik": "Standard",
     "spoluucast": "0 €",
-    "cena": "297,53",
+    "cena": "147,57",
     "coverage": [
       "Požiar",
       "Živel",
@@ -14,12 +14,12 @@
       "Asistenčné služby"
     ],
     "odporucana_suma_nehnutelnost": "296305",
-    "limit": "50000"
+    "doplnujuce_info": "Kalkulačka nedovolí poistnú sumu nižšiu ako jej vlastné minimum (80 % odporúčanej sumy); reálne nastavená suma bola 237044 € namiesto cieľových 200000 €."
   },
   {
     "balik": "Comfort",
     "spoluucast": "0 €",
-    "cena": "302,23",
+    "cena": "152,27",
     "coverage": [
       "Požiar",
       "Živel",
@@ -31,12 +31,12 @@
       "Asistenčné služby"
     ],
     "odporucana_suma_nehnutelnost": "296305",
-    "limit": "100000"
+    "doplnujuce_info": "Kalkulačka nedovolí poistnú sumu nižšiu ako jej vlastné minimum (80 % odporúčanej sumy); reálne nastavená suma bola 237044 € namiesto cieľových 200000 €."
   },
   {
     "balik": "Exclusive",
     "spoluucast": "0 €",
-    "cena": "313,66",
+    "cena": "163,70",
     "coverage": [
       "Požiar",
       "Živel",
@@ -48,6 +48,6 @@
       "Asistenčné služby"
     ],
     "odporucana_suma_nehnutelnost": "296305",
-    "limit": "200000"
+    "doplnujuce_info": "Kalkulačka nedovolí poistnú sumu nižšiu ako jej vlastné minimum (80 % odporúčanej sumy); reálne nastavená suma bola 237044 € namiesto cieľových 200000 €."
   }
 ]
