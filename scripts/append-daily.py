@@ -103,31 +103,12 @@ def run(profile_id):
     with open(csv_path, newline='', encoding='utf-8') as fh:
         rows = list(csv.reader(fh))
     header, data_rows = rows[0], rows[1:]
+    data_rows = [r for r in data_rows if len(r) == len(header)]
 
     this_run_rows = [r for r in data_rows if r[0] == TODAY]
     if not this_run_rows:
         print(f'{profile_id}: no rows for {TODAY} in {csv_path}, skipping')
         return
-
-    meta_row = this_run_rows[0]
-    uniqa_note_row = list(meta_row)
-    uniqa_note_row[14] = ''
-    uniqa_note_row[15] = 'Uniqa'
-    uniqa_note_row[16] = '-'
-    uniqa_note_row[17] = ''
-    uniqa_note_row[18] = ''
-    uniqa_note_row[19] = 'neuvedené'
-    uniqa_note_row[20] = ''
-    uniqa_note_row[21] = ''
-    uniqa_note_row[22] = ''
-    uniqa_note_row[23] = ''
-    uniqa_note_row[24] = '-'
-    uniqa_note_row[25] = '-'
-    uniqa_note_row[26] = ('Kalkulačka vyplnená kompletne a správne, ale server odmieta finálny výpočet ceny s '
-                           'chybou "Ochrana proti spamu" (neviditeľná reCAPTCHA v3 kontrola viazaná na reputáciu '
-                           'IP adresy / automatizáciu prehliadača) — cenu sa z tohto cloudového prostredia '
-                           'nepodarilo získať.')
-    this_run_rows = this_run_rows + [uniqa_note_row]
 
     r = start
     for row in this_run_rows:

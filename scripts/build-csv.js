@@ -67,7 +67,9 @@ function run(insurer, profileId, poistovnaName, extraInfo) {
     lines.push(row.map(csvEscape).join(','));
   }
 
-  fs.appendFileSync(outPath, lines.join('\n') + '\n');
+  if (lines.length) {
+    fs.appendFileSync(outPath, lines.join('\n') + '\n');
+  }
   console.log(`Wrote ${results.length} rows for ${insurer}/${profileId} -> ${outPath}`);
 }
 

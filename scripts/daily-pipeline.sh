@@ -3,7 +3,9 @@
 # 4 property profiles, rebuilds data/results/*.csv fresh, appends today's
 # rows onto the growing master ledgers (data/master/*.xlsx), and rebuilds
 # the visualization workbook (data/dashboard/Prehlad_cien_poistovne.xlsx).
-# UNIQA is skipped (blocked by anti-bot reCAPTCHA; documented separately).
+# UNIQA is collected via a broker comparison widget (scripts/collect-uniqa.js)
+# since its own calculator blocks direct automated access (see
+# insurers/uniqa/capture/BLOCKED.md).
 # Does NOT commit/push - the caller does that after reviewing the summary.
 set -uo pipefail
 cd /home/user/Monitoring
@@ -21,6 +23,7 @@ declare -A INSURER_NAMES=(
   [kooperativa]="Kooperativa (Bezstarostný domov)"
   [union]="Union"
   [wustenrot]="Wüstenrot (W dobrom domov)"
+  [uniqa]="UNIQA"
 )
 
 rm -f data/results/*.csv

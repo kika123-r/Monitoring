@@ -1,154 +1,15 @@
 Dátum zberu cien,Typ nehnuteľnosti,Typ strechy,Počet podlaží,Mesto,Ulica,Číslo/PSČ,Podlahová plocha v m2,"Loggia, balkón, terasa v m2",Rok kolaudácie,Materiál,Účel využitia,Poistná suma nehnuteľnosť,Poistná suma domácnosť,Odporúčaná poistná suma nehnuteľnosť,Poisťovňa,Balík,Rozsah krytia balíkov,Cena,Tolerancia podpoistenia,Spoluúčasť,Zodpovednosť z vlastníctva nehnuteľnosti,Zodpovednosť z občianskeho života,Doplnkové poistenia,Uplatnená zľava,Možné zľavy a bonusy,Doplňujúce info
-2026-10-15,Dom,rovná,2,Vlčkovce,Vlčkovce,"447, 919 23",110,20,2023,Tehla,bývanie,300000,30000,140000,Allianz,Comfort,"Náklady na opravu alebo na obstaranie vecí poškodených alebo zničených živelnými rizikami, ohňom alebo podobnými rizikami.
-24/7 asistenčné služby (napr. vodoinštalatérske práce), náhradné ubytovanie, ak je Vaša domácnosť po poistnej udalosti neobývateľná.
-Zodpovednosť za škodu spôsobenú na veci alebo na zdraví inej osoby.
-Vodovodná škoda a rozbitie skla.
-Krádež, poškodenie alebo zničenie vecí pri pokuse o krádež alebo vandalizme.
-Poškodenie spôsobené skratom alebo prepätím.","174,12 €",neuvedené,0 €,100000,100000,,-,-,"Limit zodpovednosti 100 000 EUR je aktualny default kalkulacky (volitelne aj 500 000 EUR); historicke udaje z minulych mesiacov mali 200 000 EUR, co uz ako volba nie je k dispozicii - pravdepodobna zmena kalkulacky poistovne. Rozsah krytia je teraz rovnaky text pre vsetky baliky (Comfort/Extra/Max), lisia sa len cenou - povodne mal Comfort kratsi zoznam."
-2026-10-15,Dom,rovná,2,Vlčkovce,Vlčkovce,"447, 919 23",110,20,2023,Tehla,bývanie,300000,30000,140000,Allianz,Comfort,"Náklady na opravu alebo na obstaranie vecí poškodených alebo zničených živelnými rizikami, ohňom alebo podobnými rizikami.
-24/7 asistenčné služby (napr. vodoinštalatérske práce), náhradné ubytovanie, ak je Vaša domácnosť po poistnej udalosti neobývateľná.
-Zodpovednosť za škodu spôsobenú na veci alebo na zdraví inej osoby.
-Vodovodná škoda a rozbitie skla.
-Krádež, poškodenie alebo zničenie vecí pri pokuse o krádež alebo vandalizme.
-Poškodenie spôsobené skratom alebo prepätím.","158,64 €",neuvedené,100 €,100000,100000,,-,-,"Limit zodpovednosti 100 000 EUR je aktualny default kalkulacky (volitelne aj 500 000 EUR); historicke udaje z minulych mesiacov mali 200 000 EUR, co uz ako volba nie je k dispozicii - pravdepodobna zmena kalkulacky poistovne. Rozsah krytia je teraz rovnaky text pre vsetky baliky (Comfort/Extra/Max), lisia sa len cenou - povodne mal Comfort kratsi zoznam."
-2026-10-15,Dom,rovná,2,Vlčkovce,Vlčkovce,"447, 919 23",110,20,2023,Tehla,bývanie,300000,30000,140000,Allianz,Extra,"Náklady na opravu alebo na obstaranie vecí poškodených alebo zničených živelnými rizikami, ohňom alebo podobnými rizikami.
-24/7 asistenčné služby (napr. vodoinštalatérske práce), náhradné ubytovanie, ak je Vaša domácnosť po poistnej udalosti neobývateľná.
-Zodpovednosť za škodu spôsobenú na veci alebo na zdraví inej osoby.
-Vodovodná škoda a rozbitie skla.
-Krádež, poškodenie alebo zničenie vecí pri pokuse o krádež alebo vandalizme.
-Poškodenie spôsobené skratom alebo prepätím.","236,40 €",neuvedené,0 €,100000,100000,,-,-,"Limit zodpovednosti 100 000 EUR je aktualny default kalkulacky (volitelne aj 500 000 EUR); historicke udaje z minulych mesiacov mali 200 000 EUR, co uz ako volba nie je k dispozicii - pravdepodobna zmena kalkulacky poistovne. Rozsah krytia je teraz rovnaky text pre vsetky baliky (Comfort/Extra/Max), lisia sa len cenou - povodne mal Comfort kratsi zoznam."
-2026-10-15,Dom,rovná,2,Vlčkovce,Vlčkovce,"447, 919 23",110,20,2023,Tehla,bývanie,300000,30000,140000,Allianz,Extra,"Náklady na opravu alebo na obstaranie vecí poškodených alebo zničených živelnými rizikami, ohňom alebo podobnými rizikami.
-24/7 asistenčné služby (napr. vodoinštalatérske práce), náhradné ubytovanie, ak je Vaša domácnosť po poistnej udalosti neobývateľná.
-Zodpovednosť za škodu spôsobenú na veci alebo na zdraví inej osoby.
-Vodovodná škoda a rozbitie skla.
-Krádež, poškodenie alebo zničenie vecí pri pokuse o krádež alebo vandalizme.
-Poškodenie spôsobené skratom alebo prepätím.","216,84 €",neuvedené,100 €,100000,100000,,-,-,"Limit zodpovednosti 100 000 EUR je aktualny default kalkulacky (volitelne aj 500 000 EUR); historicke udaje z minulych mesiacov mali 200 000 EUR, co uz ako volba nie je k dispozicii - pravdepodobna zmena kalkulacky poistovne. Rozsah krytia je teraz rovnaky text pre vsetky baliky (Comfort/Extra/Max), lisia sa len cenou - povodne mal Comfort kratsi zoznam."
-2026-10-15,Dom,rovná,2,Vlčkovce,Vlčkovce,"447, 919 23",110,20,2023,Tehla,bývanie,300000,30000,140000,Allianz,Max,"Náklady na opravu alebo na obstaranie vecí poškodených alebo zničených živelnými rizikami, ohňom alebo podobnými rizikami.
-24/7 asistenčné služby (napr. vodoinštalatérske práce), náhradné ubytovanie, ak je Vaša domácnosť po poistnej udalosti neobývateľná.
-Zodpovednosť za škodu spôsobenú na veci alebo na zdraví inej osoby.
-Vodovodná škoda a rozbitie skla.
-Krádež, poškodenie alebo zničenie vecí pri pokuse o krádež alebo vandalizme.
-Poškodenie spôsobené skratom alebo prepätím.","303,36 €",neuvedené,0 €,100000,100000,,-,-,"Limit zodpovednosti 100 000 EUR je aktualny default kalkulacky (volitelne aj 500 000 EUR); historicke udaje z minulych mesiacov mali 200 000 EUR, co uz ako volba nie je k dispozicii - pravdepodobna zmena kalkulacky poistovne. Rozsah krytia je teraz rovnaky text pre vsetky baliky (Comfort/Extra/Max), lisia sa len cenou - povodne mal Comfort kratsi zoznam."
-2026-10-15,Dom,rovná,2,Vlčkovce,Vlčkovce,"447, 919 23",110,20,2023,Tehla,bývanie,300000,30000,140000,Allianz,Max,"Náklady na opravu alebo na obstaranie vecí poškodených alebo zničených živelnými rizikami, ohňom alebo podobnými rizikami.
-24/7 asistenčné služby (napr. vodoinštalatérske práce), náhradné ubytovanie, ak je Vaša domácnosť po poistnej udalosti neobývateľná.
-Zodpovednosť za škodu spôsobenú na veci alebo na zdraví inej osoby.
-Vodovodná škoda a rozbitie skla.
-Krádež, poškodenie alebo zničenie vecí pri pokuse o krádež alebo vandalizme.
-Poškodenie spôsobené skratom alebo prepätím.","277,20 €",neuvedené,100 €,100000,100000,,-,-,"Limit zodpovednosti 100 000 EUR je aktualny default kalkulacky (volitelne aj 500 000 EUR); historicke udaje z minulych mesiacov mali 200 000 EUR, co uz ako volba nie je k dispozicii - pravdepodobna zmena kalkulacky poistovne. Rozsah krytia je teraz rovnaky text pre vsetky baliky (Comfort/Extra/Max), lisia sa len cenou - povodne mal Comfort kratsi zoznam."
-2026-10-15,Dom,rovná,2,Vlčkovce,Vlčkovce,"447, 919 23",110,20,2023,Tehla,bývanie,300000,30000,,Colonnade,Gold,"Oheň
-Výbuch
-Blesk
-Pád predmetov
-Víchrica
-Krupobitie
-Zosuv pôdy
-Sneh a mráz
-Zemetrasenie
-Náraz vozidla
-Únik vody
-Povodeň a záplava, spätné vystúpenie vody
-Krádež vlámaním a lúpež
-Skrat
-Sklo
-Zatečenie vody
-Vandalizmus
-Rozšírená asistencia","347,42 €",30%,0 €,200000,200000,,-,"obchodná zľava 5% a 10% (Discount_select, neuplatnená)",Zodpovednost nastavena na 200000 EUR (global_liability dropdown) aby sedela s profilom. Spoluucast 0 EUR. All risk/Predlzena zaruka/Happy Hypo/Bicykle/Domace zviera neboli pridane (nepoistene).
-2026-10-15,Dom,rovná,2,Vlčkovce,Vlčkovce,"447, 919 23",110,20,2023,Tehla,bývanie,300000,30000,,Colonnade,Silver,"Oheň
-Výbuch
-Blesk
-Pád predmetov
-Víchrica
-Krupobitie
-Zosuv pôdy
-Sneh a mráz
-Zemetrasenie
-Náraz vozidla
-Únik vody
-Povodeň a záplava, spätné vystúpenie vody
-Krádež vlámaním a lúpež
-Skrat
-Sklo
-Základná asistencia","337,73 €",30%,0 €,200000,200000,,-,"obchodná zľava 5% a 10% (Discount_select, neuplatnená)",Zodpovednost nastavena na 200000 EUR (global_liability dropdown) aby sedela s profilom. Spoluucast 0 EUR. All risk/Predlzena zaruka/Happy Hypo/Bicykle/Domace zviera neboli pridane (nepoistene).
-2026-10-15,Dom,rovná,2,Vlčkovce,Vlčkovce,"447, 919 23",110,20,2023,Tehla,bývanie,300000,30000,,Colonnade,Bronze,"Oheň
-Výbuch
-Blesk
-Pád predmetov
-Víchrica
-Krupobitie
-Zosuv pôdy
-Sneh a mráz
-Zemetrasenie
-Náraz vozidla
-Únik vody
-Povodeň a záplava, spätné vystúpenie vody
-Základná asistencia","254,31 €",30%,0 €,200000,200000,,-,"obchodná zľava 5% a 10% (Discount_select, neuplatnená)",Zodpovednost nastavena na 200000 EUR (global_liability dropdown) aby sedela s profilom. Spoluucast 0 EUR. All risk/Predlzena zaruka/Happy Hypo/Bicykle/Domace zviera neboli pridane (nepoistene).
-2026-10-15,Dom,rovná,2,Vlčkovce,Vlčkovce,"447, 919 23",110,20,2023,Tehla,bývanie,300000,30000,143199,Union,Základné riziká,"Požiar, výbuch, víchrica, krupobitie, priamy úder blesku, pád lietadla, imlózia
-Asistenčné služby 24/7","94,53 €",neuvedené,0 €,,,,-,-,"Union pouziva a-la-carte pripoistenia namiesto fixnych balikov. 'Zakladne rizika' = iba povinny zaklad (poziar, vybuch, vichrica, krupobitie, blesk, pad lietadla, asistencia). 'Komplet' = vsetky volitelne pripoistenia pridane naraz (Prirodne katastrofy, Ostatne zivelne rizika, Skody z vody, Ludska zlomyselnost/kradez/vandalizmus/sklo, Drobnosti pre domacnost aj nehnutelnost, Skrat). Spoluucast nastavena na 0 EUR."
-2026-10-15,Dom,rovná,2,Vlčkovce,Vlčkovce,"447, 919 23",110,20,2023,Tehla,bývanie,300000,30000,143199,Union,Komplet (všetky pripoistenia),"Základné riziká
+2026-10-16,Dom,rovná,2,Vlčkovce,Vlčkovce,"447, 919 23",110,20,2023,Tehla,bývanie,300000,30000,143199,Union,Základné riziká,"Požiar, výbuch, víchrica, krupobitie, priamy úder blesku, pád lietadla, imlózia
+Asistenčné služby 24/7","94,53 €",neuvedené,0 €,,,,-,-,
+2026-10-16,Dom,rovná,2,Vlčkovce,Vlčkovce,"447, 919 23",110,20,2023,Tehla,bývanie,300000,30000,143199,Union,Komplet (všetky pripoistenia),"Základné riziká
 Prírodné katastrofy
 Ostatné živelné riziká
 Škody z vody
 Ľudská zlomyseľnosť (krádež, vandalizmus, rozbitie skla)
 Drobnosti pre domácnosť
 Drobnosti pre nehnuteľnosť
-Skrat","286,39 €",neuvedené,0 €,,,,-,-,"Union pouziva a-la-carte pripoistenia namiesto fixnych balikov. 'Zakladne rizika' = iba povinny zaklad (poziar, vybuch, vichrica, krupobitie, blesk, pad lietadla, asistencia). 'Komplet' = vsetky volitelne pripoistenia pridane naraz (Prirodne katastrofy, Ostatne zivelne rizika, Skody z vody, Ludska zlomyselnost/kradez/vandalizmus/sklo, Drobnosti pre domacnost aj nehnutelnost, Skrat). Spoluucast nastavena na 0 EUR."
-2026-10-15,Dom,rovná,2,Vlčkovce,Vlčkovce,"447, 919 23",110,20,2023,Tehla,bývanie,300000,30000,145056,KOMUNÁLNA poisťovňa,Živel,"Združený živel a atmosférické zrážky
-Poistenie vedľajších budov
-Stavebný materiál
-Náklady na náhradné ubytovanie","132,40 €",neuvedené,0 €,,,,-,-,"KOMUNALNA kalkulacka poistuje nehnutelnost (dom/byt) a domacnost ako samostatne produkty, nie v jednej ponuke - tento beh pokryva iba nehnutelnost (budovu), poistna suma domacnosti v tabulke je teda len cielova hodnota z profilu, nie parameter zadany do kalkulacky. Spoluucast nastavena na 0 EUR (z moznosti 0/50/150 EUR)."
-2026-10-15,Dom,rovná,2,Vlčkovce,Vlčkovce,"447, 919 23",110,20,2023,Tehla,bývanie,300000,30000,145056,KOMUNÁLNA poisťovňa,Optimum,"Združený živel a atmosférické zrážky
-Krádež, lúpež, vandalizmus
-Poistenie vedľajších budov
-Stavebný materiál
-Zodpovednosť z vlastníctva nehnuteľnosti
-Náklady na náhradné ubytovanie","165,40 €",neuvedené,0 €,,,,-,-,"KOMUNALNA kalkulacka poistuje nehnutelnost (dom/byt) a domacnost ako samostatne produkty, nie v jednej ponuke - tento beh pokryva iba nehnutelnost (budovu), poistna suma domacnosti v tabulke je teda len cielova hodnota z profilu, nie parameter zadany do kalkulacky. Spoluucast nastavena na 0 EUR (z moznosti 0/50/150 EUR)."
-2026-10-15,Dom,rovná,2,Vlčkovce,Vlčkovce,"447, 919 23",110,20,2023,Tehla,bývanie,300000,30000,145056,KOMUNÁLNA poisťovňa,Excelent,"Združený živel a atmosférické zrážky
-Krádež, lúpež, vandalizmus
-Poistenie vedľajších budov
-Stavebný materiál
-Búrlivý vietor
-Asistenčné služby
-Zodpovednosť z vlastníctva nehnuteľnosti
-Náklady na náhradné ubytovanie","213,40 €",neuvedené,0 €,,,,-,-,"KOMUNALNA kalkulacka poistuje nehnutelnost (dom/byt) a domacnost ako samostatne produkty, nie v jednej ponuke - tento beh pokryva iba nehnutelnost (budovu), poistna suma domacnosti v tabulke je teda len cielova hodnota z profilu, nie parameter zadany do kalkulacky. Spoluucast nastavena na 0 EUR (z moznosti 0/50/150 EUR)."
-2026-10-15,Dom,rovná,2,Vlčkovce,Vlčkovce,"447, 919 23",110,20,2023,Tehla,bývanie,300000,30000,140308,Kooperativa (Bezstarostný domov),Prima,"Združený živel a atmosférické zrážky
-Búrlivý vietor
-Asistenčné služby","148,98 €",neuvedené,0 €,,,,-,-,
-2026-10-15,Dom,rovná,2,Vlčkovce,Vlčkovce,"447, 919 23",110,20,2023,Tehla,bývanie,300000,30000,140308,Kooperativa (Bezstarostný domov),Optimum,"Združený živel a atmosférické zrážky
-Búrlivý vietor
-Odcudzenie, vandalizmus
-Skrat elektromotorov
-Prepätie, podpätie
-Poškodenie skla
-Zodpovednosť za škodu
-Asistenčné služby","177,26 €",neuvedené,0 €,,,,-,-,
-2026-10-15,Dom,rovná,2,Vlčkovce,Vlčkovce,"447, 919 23",110,20,2023,Tehla,bývanie,300000,30000,140308,Kooperativa (Bezstarostný domov),Excelent,"Združený živel a atmosférické zrážky
-Búrlivý vietor
-Odcudzenie, vandalizmus
-Skrat elektromotorov
-Prepätie, podpätie
-Poškodenie skla
-Zodpovednosť za škodu
-Asistenčné služby","233,26 €",neuvedené,0 €,,,,-,-,
-2026-10-15,Dom,rovná,2,Vlčkovce,Vlčkovce,"447, 919 23",110,20,2023,Tehla,bývanie,300000,30000,78600,Wüstenrot (W dobrom domov),-,-,,neuvedené,-,,,,-,-,"Poistná suma nehnuteľnosti (300 000 €) presahuje limit online kalkulačky (235 800 €), nad ktorý poisťovňa vyžaduje individuálne ocenenie na pobočke; cenu sa preto nepodarilo cez kalkulačku získať."
-2026-10-15,Dom,rovná,2,Vlčkovce,Vlčkovce,"447, 919 23",110,20,2023,Tehla,bývanie,300000,30000,300410,ČSOB Poisťovňa,Klasik,"Živelná udalosť
-Odcudzenie
-Rozbitie skla
-Základné asistenčné služby – peňažné plnenie","202,39 €",neuvedené,0 €,,,,-,-,
-2026-10-15,Dom,rovná,2,Vlčkovce,Vlčkovce,"447, 919 23",110,20,2023,Tehla,bývanie,300000,30000,300410,ČSOB Poisťovňa,Štandard,"Živelná udalosť
-Odcudzenie
-Rozbitie skla
-Vandalizmus
-Skrat elektromotorov
-Základné asistenčné služby – peňažné plnenie","225,85 €",neuvedené,0 €,,,,-,-,
-2026-10-15,Dom,rovná,2,Vlčkovce,Vlčkovce,"447, 919 23",110,20,2023,Tehla,bývanie,300000,30000,300410,ČSOB Poisťovňa,Extra,"Živelná udalosť
-Odcudzenie
-Rozbitie skla
-Vandalizmus
-Skrat elektromotorov
-Najvýhodnejšie limity poistného plnenia
-Extra krytie poistných rizík
-Rozšírené asistenčné služby – peňažné plnenie","275,68 €",neuvedené,0 €,,,,-,-,
-2026-10-15,Dom,rovná,2,Vlčkovce,Vlčkovce,"447, 919 23",110,20,2023,Tehla,bývanie,300000,30000,232870,Generali,Standard,"Požiar
+Skrat","286,39 €",neuvedené,0 €,,,,-,-,
+2026-10-16,Dom,rovná,2,Vlčkovce,Vlčkovce,"447, 919 23",110,20,2023,Tehla,bývanie,300000,30000,232870,Generali,Standard,"Požiar
 Živel
 Voda z vodovodného zariadenia
 Povodeň a záplava
@@ -156,7 +17,7 @@ Spodná voda
 Poškodenie vecí skratom
 Zodpovednosť z vlastníctva a/alebo prenájmu nehnuteľnosti (50 000 €)
 Asistenčné služby","195,16 €",neuvedené,0 €,,,,-,-,
-2026-10-15,Dom,rovná,2,Vlčkovce,Vlčkovce,"447, 919 23",110,20,2023,Tehla,bývanie,300000,30000,232870,Generali,Comfort,"Požiar
+2026-10-16,Dom,rovná,2,Vlčkovce,Vlčkovce,"447, 919 23",110,20,2023,Tehla,bývanie,300000,30000,232870,Generali,Comfort,"Požiar
 Živel
 Voda z vodovodného zariadenia
 Povodeň a záplava
@@ -164,7 +25,7 @@ Spodná voda
 Poškodenie vecí skratom
 Zodpovednosť z vlastníctva a/alebo prenájmu nehnuteľnosti (100 000 €)
 Asistenčné služby","199,86 €",neuvedené,0 €,,,,-,-,
-2026-10-15,Dom,rovná,2,Vlčkovce,Vlčkovce,"447, 919 23",110,20,2023,Tehla,bývanie,300000,30000,232870,Generali,Exclusive,"Požiar
+2026-10-16,Dom,rovná,2,Vlčkovce,Vlčkovce,"447, 919 23",110,20,2023,Tehla,bývanie,300000,30000,232870,Generali,Exclusive,"Požiar
 Živel
 Voda z vodovodného zariadenia
 Povodeň a záplava
@@ -172,3 +33,60 @@ Spodná voda
 Poškodenie vecí skratom
 Zodpovednosť z vlastníctva a/alebo prenájmu nehnuteľnosti (200 000 €)
 Asistenčné služby","211,29 €",neuvedené,0 €,,,,-,-,
+2026-10-16,Dom,rovná,2,Vlčkovce,Vlčkovce,"447, 919 23",110,20,2023,Tehla,bývanie,300000,30000,140308,Kooperativa (Bezstarostný domov),Prima,"Združený živel a atmosférické zrážky
+Búrlivý vietor
+Asistenčné služby","148,98 €",neuvedené,0 €,,,,-,-,
+2026-10-16,Dom,rovná,2,Vlčkovce,Vlčkovce,"447, 919 23",110,20,2023,Tehla,bývanie,300000,30000,140308,Kooperativa (Bezstarostný domov),Optimum,"Združený živel a atmosférické zrážky
+Búrlivý vietor
+Odcudzenie, vandalizmus
+Skrat elektromotorov
+Prepätie, podpätie
+Poškodenie skla
+Zodpovednosť za škodu
+Asistenčné služby","177,26 €",neuvedené,0 €,,,,-,-,
+2026-10-16,Dom,rovná,2,Vlčkovce,Vlčkovce,"447, 919 23",110,20,2023,Tehla,bývanie,300000,30000,140308,Kooperativa (Bezstarostný domov),Excelent,"Združený živel a atmosférické zrážky
+Búrlivý vietor
+Odcudzenie, vandalizmus
+Skrat elektromotorov
+Prepätie, podpätie
+Poškodenie skla
+Zodpovednosť za škodu
+Asistenčné služby","233,26 €",neuvedené,0 €,,,,-,-,
+2026-10-16,Dom,rovná,2,Vlčkovce,Vlčkovce,"447, 919 23",110,20,2023,Tehla,bývanie,300000,30000,300410,ČSOB Poisťovňa,Klasik,"Živelná udalosť
+Odcudzenie
+Rozbitie skla
+Základné asistenčné služby – peňažné plnenie","224,88 €",neuvedené,0 €,,,,-,-,
+2026-10-16,Dom,rovná,2,Vlčkovce,Vlčkovce,"447, 919 23",110,20,2023,Tehla,bývanie,300000,30000,300410,ČSOB Poisťovňa,Štandard,"Živelná udalosť
+Odcudzenie
+Rozbitie skla
+Vandalizmus
+Skrat elektromotorov
+Základné asistenčné služby – peňažné plnenie","250,95 €",neuvedené,0 €,,,,-,-,
+2026-10-16,Dom,rovná,2,Vlčkovce,Vlčkovce,"447, 919 23",110,20,2023,Tehla,bývanie,300000,30000,300410,ČSOB Poisťovňa,Extra,"Živelná udalosť
+Odcudzenie
+Rozbitie skla
+Vandalizmus
+Skrat elektromotorov
+Najvýhodnejšie limity poistného plnenia
+Extra krytie poistných rizík
+Rozšírené asistenčné služby – peňažné plnenie","306,32 €",neuvedené,0 €,,,,-,-,
+2026-10-16,Dom,rovná,2,Vlčkovce,Vlčkovce,"447, 919 23",110,20,2023,Tehla,bývanie,300000,30000,145056,KOMUNÁLNA poisťovňa,Živel,"Združený živel a atmosférické zrážky
+Poistenie vedľajších budov
+Stavebný materiál
+Náklady na náhradné ubytovanie","132,40 €",neuvedené,0 €,,,,-,-,
+2026-10-16,Dom,rovná,2,Vlčkovce,Vlčkovce,"447, 919 23",110,20,2023,Tehla,bývanie,300000,30000,145056,KOMUNÁLNA poisťovňa,Optimum,"Združený živel a atmosférické zrážky
+Krádež, lúpež, vandalizmus
+Poistenie vedľajších budov
+Stavebný materiál
+Zodpovednosť z vlastníctva nehnuteľnosti
+Náklady na náhradné ubytovanie","165,40 €",neuvedené,0 €,,,,-,-,
+2026-10-16,Dom,rovná,2,Vlčkovce,Vlčkovce,"447, 919 23",110,20,2023,Tehla,bývanie,300000,30000,145056,KOMUNÁLNA poisťovňa,Excelent,"Združený živel a atmosférické zrážky
+Krádež, lúpež, vandalizmus
+Poistenie vedľajších budov
+Stavebný materiál
+Búrlivý vietor
+Asistenčné služby
+Zodpovednosť z vlastníctva nehnuteľnosti
+Náklady na náhradné ubytovanie","213,40 €",neuvedené,0 €,,,,-,-,
+2026-10-16,Dom,rovná,2,Vlčkovce,Vlčkovce,"447, 919 23",110,20,2023,Tehla,bývanie,300000,30000,300000,UNIQA,EXTRA,,"303,10 €",neuvedené,0 €,,,,-,-,"Cena získaná cez porovnávací nástroj licencovaného finančného sprostredkovateľa (netfinancie.sk / Klik.cz & ePojisteni.cz s.r.o.), nie priamo z kalkulačky UNIQA - tá blokuje automatizovaný prístup anti-bot ochranou (""Ochrana proti spamu"", pozri insurers/uniqa/capture/BLOCKED.md). Rozsah krytia je podľa predvoleného odporúčania tohto sprostredkovateľa, nemusí byť totožný s rozsahom zvoleným na priamych kalkulačkách ostatných poisťovní."
+2026-10-16,Dom,rovná,2,Vlčkovce,Vlčkovce,"447, 919 23",110,20,2023,Tehla,bývanie,300000,30000,300000,UNIQA,PLUS,,"237,81 €",neuvedené,0 €,,,,-,-,"Cena získaná cez porovnávací nástroj licencovaného finančného sprostredkovateľa (netfinancie.sk / Klik.cz & ePojisteni.cz s.r.o.), nie priamo z kalkulačky UNIQA - tá blokuje automatizovaný prístup anti-bot ochranou (""Ochrana proti spamu"", pozri insurers/uniqa/capture/BLOCKED.md). Rozsah krytia je podľa predvoleného odporúčania tohto sprostredkovateľa, nemusí byť totožný s rozsahom zvoleným na priamych kalkulačkách ostatných poisťovní."
