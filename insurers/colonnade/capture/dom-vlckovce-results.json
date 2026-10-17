@@ -23,10 +23,7 @@
       "Zatečenie vody",
       "Vandalizmus",
       "Rozšírená asistencia"
-    ],
-    "tolerancia": "30%",
-    "uplatnena_zlava": "-",
-    "mozne_zlavy": "obchodná zľava 5% a 10% (Discount_select, neuplatnená)"
+    ]
   },
   {
     "balik": "Silver",
@@ -50,10 +47,7 @@
       "Skrat",
       "Sklo",
       "Základná asistencia"
-    ],
-    "tolerancia": "30%",
-    "uplatnena_zlava": "-",
-    "mozne_zlavy": "obchodná zľava 5% a 10% (Discount_select, neuplatnená)"
+    ]
   },
   {
     "balik": "Bronze",
@@ -74,9 +68,6 @@
       "Únik vody",
       "Povodeň a záplava, spätné vystúpenie vody",
       "Základná asistencia"
-    ],
-    "tolerancia": "30%",
-    "uplatnena_zlava": "-",
-    "mozne_zlavy": "obchodná zľava 5% a 10% (Discount_select, neuplatnená)"
+    ]
   }
 ]
