@@ -68,12 +68,20 @@ async function run(profileId) {
     await page.waitForTimeout(2000);
     log('step1 (zakladne udaje) url reached');
 
-    await page.locator('input[name=miesto_poistenia_mesto]').click();
-    await page.waitForTimeout(500);
-    await page.locator('#NFXFormModal input').first().type(p.psc, { delay: 150 });
+    // The widget used to open a separate "#NFXFormModal" picker on click; as of
+    // ~2026-10-24 it instead shows an inline suggestion list (.btn-search-mestopsc)
+    // right below the Mesto field as you type - no modal involved anymore. When
+    // the PSČ has only one match (small villages like Vlčkovce), the widget
+    // auto-fills it and collapses the list before a click can land, so only
+    // click a suggestion if the field wasn't already auto-filled.
+    const mestoInput = page.locator('input[name=miesto_poistenia_mesto]');
+    await mestoInput.type(p.psc, { delay: 150 });
     await page.waitForTimeout(1200);
-    await page.locator('#NFXFormModal').getByText(p.psc, { exact: false }).first().click();
-    await page.waitForTimeout(800);
+    const autoFilled = /[a-zA-Zá-žÁ-Ž]/.test(await mestoInput.inputValue());
+    if (!autoFilled) {
+      await page.locator('.btn-search-mestopsc').first().click();
+      await page.waitForTimeout(800);
+    }
     await page.fill('input[name=miesto_poistenia_ulica]', p.ulica).catch(() => {});
     await page.fill('input[name=miesto_poistenia_supisne]', p.supisne);
     await page.fill('input[name=miesto_poistenia_orientacne]', p.orientacne);
