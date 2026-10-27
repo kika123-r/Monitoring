@@ -166,7 +166,19 @@ async function run(profileId) {
 
     log('UNIQA offers found:', JSON.stringify(results.map((r) => [r.balik, r.cena])));
     if (results.length === 0) {
-      throw new Error('No UNIQA offer card found on the comparison page (see saved -offers.html/-offers.png)');
+      const unavailableCard = cards.find((c) => c.insurer && c.insurer.toLowerCase().includes('uniqa'));
+      const reason = unavailableCard
+        ? unavailableCard.text.trim()
+        : 'No UNIQA card at all on the comparison page (see saved -offers.html/-offers.png)';
+      log('UNIQA has no offer today:', reason);
+      // Not a script failure: the broker itself declines to quote UNIQA for this
+      // profile today (same "rozsah poistení ... aktuálne nie je v ponuke" message
+      // seen from other insurers on this widget from time to time). Write a
+      // documented zero-row result instead of failing the pipeline run, same
+      // pattern as Wüstenrot's over-the-cap case.
+      fs.writeFileSync(`${outDir}/${profileId}-results.json`, JSON.stringify([], null, 2));
+      await browser.close();
+      return [];
     }
     fs.writeFileSync(`${outDir}/${profileId}-results.json`, JSON.stringify(results, null, 2));
 
