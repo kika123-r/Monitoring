@@ -29,6 +29,16 @@ async function run(profileId) {
     const groups = await page.$$('.uni-container.sc-union-true-false-switch');
     for (const g of groups) { const nieBtn = await g.$('button:has-text("Nie")'); if (nieBtn) await nieBtn.click(); }
     await page.waitForTimeout(500);
+    // "Čo chcete poistiť?" pill group added ~2026-10-30 - select both Nehnuteľnosť
+    // and Domácnosť (we always price both together); without this the form fails
+    // validation and "Pokračovať" silently stays on step 1.
+    const targetGroup = page.locator('#insurance-target-group');
+    if (await targetGroup.count()) {
+      await targetGroup.getByText('Nehnuteľnosť', { exact: true }).click();
+      await page.waitForTimeout(200);
+      await targetGroup.getByText('Domácnosť', { exact: true }).click();
+      await page.waitForTimeout(300);
+    }
     await page.getByLabel('Pokračovať').click();
     await page.waitForTimeout(4000);
     log('step2 url:', page.url());
@@ -44,22 +54,10 @@ async function run(profileId) {
     await page.waitForTimeout(800);
 
     await page.fill('input[placeholder="Zadajte ulicu"]', p.ulica);
-
-    if (p.type === 'FLAT') {
-      await page.locator('input[placeholder="Zadajte celkový počet poschodí"]').locator('xpath=preceding::input[1]').fill(p.cislo.split('/')[0]);
-      await page.fill('input[placeholder="Zadajte celkový počet poschodí"]', String(p.celkovePoschodi));
-      const poschodieInput = page.locator('input[placeholder="Vyberte poschodie vášho bytu"]');
-      await poschodieInput.click();
-      await poschodieInput.type(String(p.poschodie), { delay: 100 });
-      await page.waitForTimeout(900);
-      await page.getByText(`${p.poschodie}. poschodie`, { exact: true }).click().catch(() => log('no poschodie suggestion'));
-      await page.waitForTimeout(400);
-      const cisloBytuInput = page.locator('input[placeholder="Zadajte PSČ"]').locator('xpath=preceding::input[1]');
-      await cisloBytuInput.fill(p.cislo.split('/')[1] || p.cislo.split('/')[0]);
-    } else {
-      const cisloInput = page.locator('input[placeholder="Zadajte PSČ"]').locator('xpath=preceding::input[1]');
-      await cisloInput.fill(p.cislo.split('/')[0]);
-    }
+    // As of ~2026-11-01 the address step has a single combined "Súpisné / orientačné
+    // číslo" field (floor-count/apartment-floor/apartment-number moved to step 3,
+    // see below) instead of the old separate súpisné-číslo + číslo-bytu inputs.
+    await page.fill('input[placeholder="Zadajte súpisné číslo"]', p.cislo);
 
     let pscVal = await page.locator('input[placeholder="Zadajte PSČ"]').inputValue();
     log('PSC after mesto selection:', pscVal);
@@ -78,76 +76,71 @@ async function run(profileId) {
     await page.waitForTimeout(400);
     const villageGroup = await page.$('.uni-container.sc-union-true-false-switch');
     if (villageGroup) { const anoBtn = await villageGroup.$('button:has-text("Áno")'); if (anoBtn) await anoBtn.click(); }
-    await page.fill('input[placeholder="XXX XXX XXX"]', CONTACT.phone);
-    await page.fill('input[placeholder="Napíšte svoj e-mail"]', CONTACT.email);
     await page.waitForTimeout(500);
     await page.screenshot({ path: `${outDir}/${profileId}-step2.png`, fullPage: true });
-    const preContinueInvalids = await page.$$eval('.uni-input-container[aria-invalid="true"], [aria-invalid="true"]', els => els.length);
-    log('invalid-looking fields before step2 continue:', preContinueInvalids);
 
-    await page.getByText('Pokračovať', { exact: true }).click();
-    await page.waitForTimeout(1500);
-    await page.screenshot({ path: `${outDir}/${profileId}-step2-after-continue.png`, fullPage: true });
+    await page.getByLabel('Pokračovať').click();
     await page.waitForTimeout(2500);
     log('step3 url:', page.url());
 
-    // step 3: Informácie o dome/byte
-    const allGroups3 = await page.$$('.uni-container.sc-union-true-false-switch');
-    // "Je dom/byt v rekonštrukcii?" -> Nie (first group on this page)
-    if (allGroups3[0]) { const n = await allGroups3[0].$('button:has-text("Nie")'); if (n) await n.click(); }
-    await page.waitForTimeout(400);
-
-    const dds = await page.$$('union-select');
-
+    // step 3: "Informácie o nehnuteľnosti" - as of ~2026-11-01 this is a single merged
+    // step (used to be split across the address step + a separate "o dome/byte" step):
+    // plocha, stav/material dropdown(s), historická hodnota, floor count/apartment floor/
+    // apartment number (moved here from the address step), flood/damage history.
     if (p.type === 'HOUSE') {
-      await dds[0].click();
-      await page.waitForTimeout(500);
-      await page.getByText('Samostatný rodinný dom', { exact: true }).click();
+      // "Informácie o dome" - as of ~2026-11-01 this step is just plocha, a single
+      // material dropdown (the separate "typ domu"/"Samostatný rodinný dom" dropdown
+      // and the roof-type/rekonštrukcia/historická questions are gone), floods, damage.
+      await page.fill('input[name="estate-area"]', String(p.plocha));
       await page.waitForTimeout(400);
 
-      await page.fill('#estate-area', String(p.plocha));
-
-      await page.getByText('0 záplav', { exact: true }).click();
-      await page.getByText('0 škôd', { exact: true }).click();
+      const materialDropdown = page.locator('input[placeholder="Vyberte si z možností"]');
+      await materialDropdown.click();
       await page.waitForTimeout(400);
-
-      await dds[1].click();
-      await page.waitForTimeout(500);
       await page.getByText('Murovaná', { exact: true }).click();
       await page.waitForTimeout(400);
 
+      // roof type + "Má dom historickú hodnotu?" reveal progressively after material is picked
       await page.getByText(p.strecha === 'šikmá' ? 'Sedlová' : 'Plochá', { exact: true }).click();
       await page.waitForTimeout(400);
-    } else {
-      // FLAT: "Z akého materiálu je byt postavený?" dropdown (first union-select on this step), then plocha
-      log('union-select count on FLAT step3:', dds.length);
-      await dds[0].click();
-      await page.waitForTimeout(500);
-      await page.getByText(p.material, { exact: true }).click();
-      await page.waitForTimeout(400);
-
-      await dds[1].click();
-      await page.waitForTimeout(500);
-      await page.getByText('Pôvodný stav', { exact: true }).click();
-      await page.waitForTimeout(400);
-
-      const plochaInput = page.locator('text=/podlahová plocha/i').first().locator('xpath=following::input[1]');
-      await plochaInput.fill(String(p.plocha));
+      const histGroupH = await page.$('.uni-container.sc-union-true-false-switch');
+      if (histGroupH) { const n = await histGroupH.$('button:has-text("Nie")'); if (n) await n.click(); }
       await page.waitForTimeout(400);
 
       await page.getByText('0 záplav', { exact: true }).click();
       await page.getByText('0 škôd', { exact: true }).click();
       await page.waitForTimeout(400);
-      const garazGroups = await page.$$('.uni-container.sc-union-true-false-switch');
-      // groups order: [0]=rekonstrukcia(already Nie), [1]=garazovy box, [2]=historicka hodnota
-      if (garazGroups[1]) { const n = await garazGroups[1].$('button:has-text("Nie")'); if (n) await n.click(); }
+    } else {
+      // FLAT
+      await page.fill('input[name="estate-area"]', String(p.plocha));
+      await page.waitForTimeout(400);
+
+      const stavDropdown = page.locator('input[placeholder="Vyberte si z možností"]');
+      await stavDropdown.click();
+      await page.waitForTimeout(400);
+      await page.getByText('Pôvodný stav', { exact: true }).click();
+      await page.waitForTimeout(400);
+
+      // "Má byt historickú hodnotu?" -> Nie
+      const histGroup = await page.$('.uni-container.sc-union-true-false-switch');
+      if (histGroup) { const n = await histGroup.$('button:has-text("Nie")'); if (n) await n.click(); }
+      await page.waitForTimeout(400);
+
+      await page.fill('input[placeholder="Zadajte počet poschodí"]', String(p.celkovePoschodi));
+      await page.waitForTimeout(300);
+      const poschodieInput = page.locator('input[placeholder="Vyberte poschodie"]');
+      await poschodieInput.click();
+      await poschodieInput.type(String(p.poschodie), { delay: 100 });
+      await page.waitForTimeout(900);
+      await page.getByText(`${p.poschodie}. poschodie`, { exact: true }).click().catch(() => log('no poschodie suggestion'));
+      await page.waitForTimeout(400);
+      await page.fill('input[placeholder="Zadajte číslo bytu"]', p.cislo.split('/')[1] || p.cislo.split('/')[0]);
+      await page.waitForTimeout(300);
+
+      await page.getByText('0 záplav', { exact: true }).click();
+      await page.getByText('0 škôd', { exact: true }).click();
       await page.waitForTimeout(400);
     }
-
-    const allGroups3b = await page.$$('.uni-container.sc-union-true-false-switch');
-    const histGroup = allGroups3b[allGroups3b.length - 1];
-    if (histGroup) { const n = await histGroup.$('button:has-text("Nie")'); if (n) await n.click(); }
-    await page.waitForTimeout(400);
 
     await page.screenshot({ path: `${outDir}/${profileId}-step3.png`, fullPage: true });
     fs.writeFileSync(`${outDir}/${profileId}-step3.html`, await page.content());
@@ -156,53 +149,78 @@ async function run(profileId) {
     await page.waitForTimeout(2500);
     log('step4 url:', page.url());
 
-    // step 4: Poistná suma nehnuteľnosti (prefilled with Union's own recommendation)
-    const estateSumInput = page.locator('input').first();
+    // step 4: "Poistenie nehnuteľnosti a domácnosti" - as of ~2026-11-01 this merges what
+    // used to be 3 separate steps onto one page: poistná suma nehnuteľnosti (prefilled
+    // with Union's recommendation), poistná suma domácnosti, "Poistenie vedľajších
+    // objektov" (garáž/ostatné stavby - left off, not part of our profiles), and a
+    // "Kontakt na vás" phone/e-mail block. Target each suma field by its label text,
+    // not a generic input[type="text"]/first-input selector - with two sum fields now
+    // on the same page those generic selectors both resolve to the first one.
+    const estateSumInput = page.locator('text=Poistná suma nehnuteľnosti').first().locator('xpath=following::input[1]');
     const odporucanaSuma = (await estateSumInput.inputValue()).replace(/\s/g, '');
     log('odporúčaná poistná suma nehnuteľnosť:', odporucanaSuma);
     // .fill() sets the value atomically; typing char-by-char into this masked
     // field can scramble the digits (confirmed bug elsewhere, e.g. Generali).
     await estateSumInput.fill(String(p.suma_nehnutelnost));
-    await page.waitForTimeout(500);
+    await page.waitForTimeout(400);
     log('estate sum input value after fill:', await estateSumInput.inputValue().catch(() => '?'));
+
+    const householdSumInput = page.locator('text=Poistná suma domácnosti').first().locator('xpath=following::input[1]');
+    await householdSumInput.fill(String(p.suma_domacnost));
+    await page.waitForTimeout(400);
+    log('household sum input value after fill:', await householdSumInput.inputValue().catch(() => '?'));
+
+    await page.fill('input[placeholder="XXX XXX XXX"]', CONTACT.phone);
+    await page.fill('input[placeholder="Napíšte svoj e-mail"]', CONTACT.email);
+    await page.waitForTimeout(500);
     await page.screenshot({ path: `${outDir}/${profileId}-step4.png`, fullPage: true });
 
     await page.getByText('Pokračovať', { exact: true }).click();
     await page.waitForTimeout(2500);
     log('step5 url:', page.url());
-
-    // step 5: Poistná suma domácnosti
-    await page.fill('input[type="text"]', String(p.suma_domacnost));
-    await page.waitForTimeout(400);
-    await page.getByText('Pokračovať', { exact: true }).click();
-    await page.waitForTimeout(2500);
-    log('step6 url:', page.url());
-    // step 6: Cena poistenia a poistné riziká - select deductible 0 EUR, capture base-only price, then all-addons price
+    // step 5: Cena poistenia a poistné riziká - select deductible 0 EUR. As of ~2026-11-01
+    // this page dropped the old binary "základné riziká" / "pridať všetky pripoistenia"
+    // toggle in favour of a proper 3-tier Klasik/Komfort/Premium package table (same
+    // pattern as the other insurers), with a coverage grid (checkmark = included) per tier.
     await page.click('input[value="DEDUCTIBLE_0"]', { force: true });
     await page.waitForTimeout(1200);
-    let bodyText = await page.innerText('body');
-    let zakladneMatch = bodyText.match(/Celkom\s*\n([\d\s]+,\d{2})\s*€/);
-    const zakladneCena = zakladneMatch ? zakladneMatch[1].replace(/\s/g, '') : null;
-    log('Základné riziká cena (0 EUR spoluúčasť):', zakladneCena);
-    await page.screenshot({ path: `${outDir}/${profileId}-step6-zakladne.png`, fullPage: true });
+    await page.screenshot({ path: `${outDir}/${profileId}-step5-offer.png`, fullPage: true });
+    fs.writeFileSync(`${outDir}/${profileId}-step5.html`, await page.content());
 
-    await page.getByText('Pridať všetky pripoistenia', { exact: true }).click();
-    await page.waitForTimeout(1200);
-    bodyText = await page.innerText('body');
-    let kompletMatch = bodyText.match(/Celkom\s*\n([\d\s]+,\d{2})\s*€/);
-    const kompletCena = kompletMatch ? kompletMatch[1].replace(/\s/g, '') : null;
-    log('Komplet (všetky pripoistenia) cena:', kompletCena);
-    await page.screenshot({ path: `${outDir}/${profileId}-step6-komplet.png`, fullPage: true });
-    fs.writeFileSync(`${outDir}/${profileId}-step6.html`, await page.content());
+    // the table repeats its header row at the bottom too (same class minus --top) - scope to --top only
+    const tiers = await page.$$eval('.ssp-fun-table-column-header--top', (els) => els.map((e) => {
+      const style = e.getAttribute('style') || '';
+      const m = style.match(/grid-area:\s*\d+\s*\/\s*(\d+)/);
+      return {
+        col: m ? parseInt(m[1], 10) : null,
+        name: e.querySelector('.ssp-fun-table-column-header__title')?.textContent.trim(),
+        cena: e.querySelector('.ssp-fun-table-column-header__price-value')?.textContent.replace(/ |\s/g, '').replace('€', '').trim(),
+      };
+    }).filter((t) => t.name && t.col !== null));
+    log('tiers:', JSON.stringify(tiers));
 
-    const results = [
-      { balik: 'Základné riziká', spoluucast: '0 €', cena: zakladneCena, coverage: ['Požiar, výbuch, víchrica, krupobitie, priamy úder blesku, pád lietadla, imlózia', 'Asistenčné služby 24/7'] },
-      { balik: 'Komplet (všetky pripoistenia)', spoluucast: '0 €', cena: kompletCena, coverage: ['Základné riziká', 'Prírodné katastrofy', 'Ostatné živelné riziká', 'Škody z vody', 'Ľudská zlomyseľnosť (krádež, vandalizmus, rozbitie skla)', 'Drobnosti pre domácnosť', 'Drobnosti pre nehnuteľnosť', 'Skrat'] },
-    ];
-    fs.writeFileSync(`${outDir}/${profileId}-results.json`, JSON.stringify(results.map(r => ({ ...r, odporucana_suma_nehnutelnost: odporucanaSuma, limit: '' })), null, 2));
+    const rows = await page.$$eval('.ssp-fun-table__row', (rowEls) => rowEls.map((row) => {
+      const label = row.querySelector('.ssp-fun-table-label-cell__label')?.textContent.trim();
+      const cells = Array.from(row.querySelectorAll('.ssp-fun-table-cell')).map((c) => {
+        const style = c.getAttribute('style') || '';
+        const m = style.match(/grid-area:\s*\d+\s*\/\s*(\d+)/);
+        const icon = c.querySelector('union-icon');
+        return { col: m ? parseInt(m[1], 10) : null, included: icon?.getAttribute('aria-label') === 'Zahrnuté' };
+      });
+      return { label, cells };
+    }).filter((r) => r.label));
+
+    const results = tiers.map((tier) => ({
+      balik: tier.name,
+      spoluucast: '0 €',
+      cena: tier.cena,
+      coverage: rows.filter((r) => r.cells.some((c) => c.col === tier.col && c.included)).map((r) => r.label),
+    }));
+    log('results:', JSON.stringify(results.map((r) => [r.balik, r.cena, r.coverage.length])));
+    fs.writeFileSync(`${outDir}/${profileId}-results.json`, JSON.stringify(results.map((r) => ({ ...r, odporucana_suma_nehnutelnost: odporucanaSuma, limit: '' })), null, 2));
 
     await browser.close();
-    return { odporucanaSuma, zakladneCena, kompletCena };
+    return results;
   } catch (e) {
     await page.screenshot({ path: `${outDir}/${profileId}-ERROR.png`, fullPage: true }).catch(() => {});
     await browser.close();
