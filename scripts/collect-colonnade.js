@@ -59,57 +59,64 @@ async function run(profileId) {
     if (!page.url().includes('/cena')) throw new Error('did not reach price page');
 
     await page.selectOption('select[name="global_liability"]', '200 000 €');
-    await page.selectOption('select[name="global_deductible"]', '0 €');
-    await page.waitForTimeout(2000);
+    await page.waitForTimeout(500);
 
-    const rows = await page.$$eval('.table-row', trs => trs.map(tr => {
-      const cells = Array.from(tr.querySelectorAll(':scope > .cell'));
-      const label = cells[0] ? cells[0].innerText.trim().replace(/\s+/g, ' ') : '';
-      const states = cells.slice(1).map(c => {
-        const icon = c.querySelector('i.fa-check, i.fa-times');
-        if (icon) return icon.classList.contains('fa-check') ? 'YES' : 'NO';
-        const btn = c.innerText.trim();
-        return btn || '';
-      });
-      return [label, ...states];
-    }));
-
-    // only keep 3-column rows (per-package coverage rows), ignore 1-col description/summary rows, dedupe by label
-    const seen = new Set();
-    const coverageRows = [];
-    for (const r of rows) {
-      if (r.length === 4 && !seen.has(r[0])) {
-        seen.add(r[0]);
-        coverageRows.push(r);
-      }
-    }
-    log('coverage rows:', JSON.stringify(coverageRows));
-
-    const priceTexts = await page.$$eval('.cena, [class*="cena"]', els => els.map(e => e.innerText.trim())).catch(() => []);
-    const fullText = await page.innerText('body');
-    const priceBlockMatch = fullText.match(/Cena\s*\n\s*([\d.,]+)\s*€\s*\n\s*Cena\s*\n\s*([\d.,]+)\s*€\s*\n\s*Cena\s*\n\s*([\d.,]+)\s*€/);
-    log('priceBlockMatch:', priceBlockMatch ? priceBlockMatch.slice(1,4) : 'NOT FOUND');
+    const deductibleOpts = await page.locator('select[name="global_deductible"] option').allTextContents();
+    log('deductible options:', JSON.stringify(deductibleOpts));
 
     const packages = ['GOLD', 'SILVER', 'BRONZE'];
-    const prices = priceBlockMatch ? priceBlockMatch.slice(1,4) : [null,null,null];
+    const results = [];
+    for (const ded of deductibleOpts) {
+      await page.selectOption('select[name="global_deductible"]', ded);
+      await page.waitForTimeout(2000);
 
-    const coverageByPkg = { GOLD: [], SILVER: [], BRONZE: [] };
-    for (const row of coverageRows) {
-      const [label, g, s, b] = row;
-      const vals = { GOLD: g, SILVER: s, BRONZE: b };
-      for (const pkg of packages) {
-        const v = vals[pkg];
-        if (v === 'YES' || v === 'Odobrať') coverageByPkg[pkg].push(label);
+      const rows = await page.$$eval('.table-row', trs => trs.map(tr => {
+        const cells = Array.from(tr.querySelectorAll(':scope > .cell'));
+        const label = cells[0] ? cells[0].innerText.trim().replace(/\s+/g, ' ') : '';
+        const states = cells.slice(1).map(c => {
+          const icon = c.querySelector('i.fa-check, i.fa-times');
+          if (icon) return icon.classList.contains('fa-check') ? 'YES' : 'NO';
+          const btn = c.innerText.trim();
+          return btn || '';
+        });
+        return [label, ...states];
+      }));
+
+      // only keep 3-column rows (per-package coverage rows), ignore 1-col description/summary rows, dedupe by label
+      const seen = new Set();
+      const coverageRows = [];
+      for (const r of rows) {
+        if (r.length === 4 && !seen.has(r[0])) {
+          seen.add(r[0]);
+          coverageRows.push(r);
+        }
+      }
+
+      const fullText = await page.innerText('body');
+      const priceBlockMatch = fullText.match(/Cena\s*\n\s*([\d.,]+)\s*€\s*\n\s*Cena\s*\n\s*([\d.,]+)\s*€\s*\n\s*Cena\s*\n\s*([\d.,]+)\s*€/);
+      log(`deductible ${ded} priceBlockMatch:`, priceBlockMatch ? priceBlockMatch.slice(1, 4) : 'NOT FOUND');
+      const prices = priceBlockMatch ? priceBlockMatch.slice(1, 4) : [null, null, null];
+
+      const coverageByPkg = { GOLD: [], SILVER: [], BRONZE: [] };
+      for (const row of coverageRows) {
+        const [label, g, s, b] = row;
+        const vals = { GOLD: g, SILVER: s, BRONZE: b };
+        for (const pkg of packages) {
+          const v = vals[pkg];
+          if (v === 'YES' || v === 'Odobrať') coverageByPkg[pkg].push(label);
+        }
+      }
+
+      for (const [i, pkg] of packages.entries()) {
+        results.push({
+          balik: pkg.charAt(0) + pkg.slice(1).toLowerCase(),
+          spoluucast: ded,
+          cena: prices[i],
+          limit: '200000',
+          coverage: coverageByPkg[pkg],
+        });
       }
     }
-
-    const results = packages.map((pkg, i) => ({
-      balik: pkg.charAt(0) + pkg.slice(1).toLowerCase(),
-      spoluucast: '0 €',
-      cena: prices[i],
-      limit: '200000',
-      coverage: coverageByPkg[pkg],
-    }));
 
     fs.writeFileSync(`${outDir}/${profileId}-results.json`, JSON.stringify(results, null, 2));
     await page.screenshot({ path: `${outDir}/${profileId}-final.png`, fullPage: true });

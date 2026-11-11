@@ -40,5 +40,89 @@
       "Rozšírené asistenčné služby – peňažné plnenie"
     ],
     "odporucana_suma_nehnutelnost": "200248"
+  },
+  {
+    "balik": "Klasik",
+    "spoluucast": "50 €",
+    "cena": "124,53",
+    "coverage": [
+      "Živelná udalosť",
+      "Odcudzenie",
+      "Rozbitie skla",
+      "Základné asistenčné služby – peňažné plnenie"
+    ],
+    "odporucana_suma_nehnutelnost": "200248"
+  },
+  {
+    "balik": "Štandard",
+    "spoluucast": "50 €",
+    "cena": "139,66",
+    "coverage": [
+      "Živelná udalosť",
+      "Odcudzenie",
+      "Rozbitie skla",
+      "Vandalizmus",
+      "Skrat elektromotorov",
+      "Základné asistenčné služby – peňažné plnenie"
+    ],
+    "odporucana_suma_nehnutelnost": "200248"
+  },
+  {
+    "balik": "Extra",
+    "spoluucast": "50 €",
+    "cena": "171,20",
+    "coverage": [
+      "Živelná udalosť",
+      "Odcudzenie",
+      "Rozbitie skla",
+      "Vandalizmus",
+      "Skrat elektromotorov",
+      "Najvýhodnejšie limity poistného plnenia",
+      "Extra krytie poistných rizík",
+      "Rozšírené asistenčné služby – peňažné plnenie"
+    ],
+    "odporucana_suma_nehnutelnost": "200248"
+  },
+  {
+    "balik": "Klasik",
+    "spoluucast": "100 €",
+    "cena": "117,61",
+    "coverage": [
+      "Živelná udalosť",
+      "Odcudzenie",
+      "Rozbitie skla",
+      "Základné asistenčné služby – peňažné plnenie"
+    ],
+    "odporucana_suma_nehnutelnost": "200248"
+  },
+  {
+    "balik": "Štandard",
+    "spoluucast": "100 €",
+    "cena": "131,90",
+    "coverage": [
+      "Živelná udalosť",
+      "Odcudzenie",
+      "Rozbitie skla",
+      "Vandalizmus",
+      "Skrat elektromotorov",
+      "Základné asistenčné služby – peňažné plnenie"
+    ],
+    "odporucana_suma_nehnutelnost": "200248"
+  },
+  {
+    "balik": "Extra",
+    "spoluucast": "100 €",
+    "cena": "161,69",
+    "coverage": [
+      "Živelná udalosť",
+      "Odcudzenie",
+      "Rozbitie skla",
+      "Vandalizmus",
+      "Skrat elektromotorov",
+      "Najvýhodnejšie limity poistného plnenia",
+      "Extra krytie poistných rizík",
+      "Rozšírené asistenčné služby – peňažné plnenie"
+    ],
+    "odporucana_suma_nehnutelnost": "200248"
   }
 ]

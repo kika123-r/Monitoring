@@ -64,6 +64,21 @@ async function setSlider(frame, page, nth, target, log) {
   return final;
 }
 
+async function selectDeductible(frame, page, label, log) {
+  for (let attempt = 1; attempt <= 4; attempt++) {
+    await frame.locator('button', { hasText: label }).first().click({ force: true }).catch(() => {});
+    await page.waitForTimeout(1000);
+    const cls = await frame.locator('button', { hasText: label }).first().getAttribute('class').catch(() => '');
+    if (cls && cls.includes('selected')) {
+      if (log && attempt > 1) log(`  deductible ${label} selected on attempt ${attempt}`);
+      return;
+    }
+    if (log) log(`  deductible ${label} click did not land (attempt ${attempt}), retrying...`);
+    await page.waitForTimeout(500);
+  }
+  throw new Error(`deductible button "${label}" never became selected after 4 attempts`);
+}
+
 async function run(profileId) {
   const p = PROFILES[profileId];
   const outDir = '/home/user/Monitoring/insurers/csob/capture';
@@ -147,9 +162,13 @@ async function run(profileId) {
     await page.waitForTimeout(2000);
     log('step3 (vyber balika) url reached');
 
-    // spoluucast = 0 EUR
-    await frame.locator('button:has-text("0 EUR")').first().click({ force: true }).catch(() => {});
-    await page.waitForTimeout(1000);
+    // spoluucast = 0 EUR first, to set up the sliders. The click onto the deductible
+    // button has historically failed intermittently (silently swallowed by the old
+    // code's .catch), leaving the widget's own default (50 EUR) selected while the
+    // output still claimed "0 €" - confirmed by comparing today's real 0€/50€ prices
+    // against the historical master ledger, which flips between both values roughly
+    // 50/50 across days. Verify the click actually landed and retry if not.
+    await selectDeductible(frame, page, '0 EUR', log);
 
     const nehnutelnostActual = await setSlider(frame, page, 0, p.suma_nehnutelnost, log);
     log('nehnutelnost slider set to', nehnutelnostActual);
@@ -159,24 +178,52 @@ async function run(profileId) {
     await page.waitForTimeout(1500);
     await page.screenshot({ path: `${outDir}/${profileId}-offer.png`, fullPage: true });
 
-    const names = (await frame.locator('.package-header-wrapper .name').allTextContents()).map(s => s.trim());
-    const prices = (await frame.locator('.package-header-wrapper .price b').allTextContents()).map(s => s.replace(/\s/g, '').replace('EUR', '').trim());
-    const allCovers = await frame.locator('.package-cover').evaluateAll(els => els.map(el => ({
-      label: (el.querySelector('span:last-child')?.textContent || '').trim(),
-      included: !el.classList.contains('cover-disabled'),
-    })));
-    const perPkg = Math.floor(allCovers.length / names.length);
-    const results = names.map((name, i) => {
-      const chunk = allCovers.slice(i * perPkg, (i + 1) * perPkg);
-      return {
-        balik: name,
-        spoluucast: '0 €',
-        cena: prices[i],
-        coverage: chunk.filter(c => c.included).map(c => c.label),
-        odporucana_suma_nehnutelnost: String(nehnutelnostActual),
-      };
-    });
-    log('DONE', JSON.stringify(results.map(r => [r.balik, r.cena])));
+    // read off every deductible tier the widget offers (sliders stay put when switching)
+    const deductibleBtns = await frame.locator('button').allTextContents();
+    const deductibles = [...new Set(deductibleBtns.map((t) => t.trim()).filter((t) => /^\d+\s*EUR$/.test(t)))];
+    log('deductible options:', JSON.stringify(deductibles));
+
+    const readOffer = async () => {
+      const names = (await frame.locator('.package-header-wrapper .name').allTextContents()).map(s => s.trim());
+      const prices = (await frame.locator('.package-header-wrapper .price b').allTextContents()).map(s => s.replace(/\s/g, '').replace('EUR', '').trim());
+      const allCovers = await frame.locator('.package-cover').evaluateAll(els => els.map(el => ({
+        label: (el.querySelector('span:last-child')?.textContent || '').trim(),
+        included: !el.classList.contains('cover-disabled'),
+      })));
+      return { names, prices, allCovers };
+    };
+
+    const results = [];
+    let prevPrices = null;
+    for (const ded of deductibles) {
+      await selectDeductible(frame, page, ded, log);
+
+      let { names, prices, allCovers } = await readOffer();
+      // the deductible button can show "selected" before the package prices have
+      // re-rendered (confirmed on Union's widget too) - if unchanged from the previous
+      // deductible, give it more time and re-read before accepting.
+      const pricesNow = prices.join('|');
+      if (prevPrices !== null && pricesNow === prevPrices) {
+        log(`  prices unchanged from previous deductible, waiting longer and re-reading...`);
+        await page.waitForTimeout(1500);
+        ({ names, prices, allCovers } = await readOffer());
+      }
+      prevPrices = prices.join('|');
+      const perPkg = Math.floor(allCovers.length / names.length);
+      const spoluucastLabel = ded.replace('EUR', '€').replace(/\s+/g, ' ').trim();
+      log(`deductible ${ded} ->`, JSON.stringify(names.map((n, i) => [n, prices[i]])));
+      for (const [i, name] of names.entries()) {
+        const chunk = allCovers.slice(i * perPkg, (i + 1) * perPkg);
+        results.push({
+          balik: name,
+          spoluucast: spoluucastLabel,
+          cena: prices[i],
+          coverage: chunk.filter(c => c.included).map(c => c.label),
+          odporucana_suma_nehnutelnost: String(nehnutelnostActual),
+        });
+      }
+    }
+    log('DONE', JSON.stringify(results.map(r => [r.balik, r.spoluucast, r.cena])));
     fs.writeFileSync(`${outDir}/${profileId}-results.json`, JSON.stringify(results, null, 2));
 
     await browser.close();

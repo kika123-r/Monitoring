@@ -40,5 +40,89 @@
       "Náklady na náhradné ubytovanie"
     ],
     "odporucana_suma_nehnutelnost": "54515"
+  },
+  {
+    "balik": "Živel",
+    "spoluucast": "50 €",
+    "cena": "63,26",
+    "coverage": [
+      "Združený živel a atmosférické zrážky",
+      "Poistenie vedľajších budov",
+      "Stavebný materiál",
+      "Náklady na náhradné ubytovanie"
+    ],
+    "odporucana_suma_nehnutelnost": "54515"
+  },
+  {
+    "balik": "Optimum",
+    "spoluucast": "50 €",
+    "cena": "72,34",
+    "coverage": [
+      "Združený živel a atmosférické zrážky",
+      "Krádež, lúpež, vandalizmus",
+      "Poistenie vedľajších budov",
+      "Stavebný materiál",
+      "Zodpovednosť z vlastníctva nehnuteľnosti",
+      "Náklady na náhradné ubytovanie"
+    ],
+    "odporucana_suma_nehnutelnost": "54515"
+  },
+  {
+    "balik": "Excelent",
+    "spoluucast": "50 €",
+    "cena": "86,22",
+    "coverage": [
+      "Združený živel a atmosférické zrážky",
+      "Krádež, lúpež, vandalizmus",
+      "Poistenie vedľajších budov",
+      "Stavebný materiál",
+      "Búrlivý vietor",
+      "Asistenčné služby",
+      "Zodpovednosť z vlastníctva nehnuteľnosti",
+      "Náklady na náhradné ubytovanie"
+    ],
+    "odporucana_suma_nehnutelnost": "54515"
+  },
+  {
+    "balik": "Živel",
+    "spoluucast": "150 €",
+    "cena": "60,14",
+    "coverage": [
+      "Združený živel a atmosférické zrážky",
+      "Poistenie vedľajších budov",
+      "Stavebný materiál",
+      "Náklady na náhradné ubytovanie"
+    ],
+    "odporucana_suma_nehnutelnost": "54515"
+  },
+  {
+    "balik": "Optimum",
+    "spoluucast": "150 €",
+    "cena": "68,71",
+    "coverage": [
+      "Združený živel a atmosférické zrážky",
+      "Krádež, lúpež, vandalizmus",
+      "Poistenie vedľajších budov",
+      "Stavebný materiál",
+      "Zodpovednosť z vlastníctva nehnuteľnosti",
+      "Náklady na náhradné ubytovanie"
+    ],
+    "odporucana_suma_nehnutelnost": "54515"
+  },
+  {
+    "balik": "Excelent",
+    "spoluucast": "150 €",
+    "cena": "81,42",
+    "coverage": [
+      "Združený živel a atmosférické zrážky",
+      "Krádež, lúpež, vandalizmus",
+      "Poistenie vedľajších budov",
+      "Stavebný materiál",
+      "Búrlivý vietor",
+      "Asistenčné služby",
+      "Zodpovednosť z vlastníctva nehnuteľnosti",
+      "Náklady na náhradné ubytovanie"
+    ],
+    "odporucana_suma_nehnutelnost": "54515"
   }
 ]

@@ -83,28 +83,44 @@ async function run(profileId) {
     await page.waitForTimeout(500);
     const deductibleOpts = await page.locator('#deductible-listbox li').allTextContents().catch(() => []);
     log('deductible options:', JSON.stringify(deductibleOpts));
-    if (deductibleOpts.some(o => o.includes('0 €'))) {
-      await page.locator('#deductible-listbox li', { hasText: '0 €' }).first().click();
-    } else {
-      await page.keyboard.press('Escape');
-    }
-    await page.waitForTimeout(800);
+    await page.keyboard.press('Escape');
+    await page.waitForTimeout(300);
 
     const tabIds = { 'Živel': '#tab-ZIVEL', 'Optimum': '#tab-OPTIMUM', 'Excelent': '#tab-EXCELENT' };
     const packages = ['Živel', 'Optimum', 'Excelent'];
     const results = [];
-    for (const pkg of packages) {
-      await page.click(tabIds[pkg]);
-      await page.waitForTimeout(1000);
-      const bodyTextPkg = await page.innerText('body');
-      const priceMatch = bodyTextPkg.match(/Vaša cena:\s*([\d\s]+,\d{2})\s*€/);
-      const coverage = await page.$$eval('.coverage-item', els => els
-        .map(e => ({ label: e.querySelector('.item')?.textContent.trim(), included: /Zahrnuté v balíku/.test(e.querySelector('.visually-hidden')?.textContent || '') }))
-        .filter(x => x.label && x.included)
-        .map(x => x.label)
-      ).catch(() => []);
-      results.push({ balik: pkg, spoluucast: '0 €', cena: priceMatch ? priceMatch[1].replace(/\s/g, '') : null, coverage });
-      log(pkg, '->', priceMatch ? priceMatch[1] : 'PRICE NOT FOUND');
+    for (const ded of deductibleOpts) {
+      // verify the combobox actually ends up showing the deductible we asked for -
+      // read back its own displayed text instead of trusting the click blindly, since
+      // a silently-failed click elsewhere in this pipeline (ČSOB) was found to leave
+      // the previous/default value selected while still being recorded under the
+      // wrong label.
+      let landed = false;
+      for (let attempt = 1; attempt <= 4 && !landed; attempt++) {
+        await page.click('#deductible-control');
+        await page.waitForTimeout(400);
+        await page.locator('#deductible-listbox li', { hasText: ded }).first().click();
+        await page.waitForTimeout(600);
+        const shown = (await page.locator('#deductible-control').innerText()).trim();
+        landed = shown.includes(ded);
+        if (!landed) log(`  deductible ${ded} click did not land (attempt ${attempt}, shows "${shown}"), retrying...`);
+      }
+      if (!landed) throw new Error(`deductible "${ded}" never landed in #deductible-control`);
+      await page.waitForTimeout(400);
+
+      for (const pkg of packages) {
+        await page.click(tabIds[pkg]);
+        await page.waitForTimeout(1000);
+        const bodyTextPkg = await page.innerText('body');
+        const priceMatch = bodyTextPkg.match(/Vaša cena:\s*([\d\s]+,\d{2})\s*€/);
+        const coverage = await page.$$eval('.coverage-item', els => els
+          .map(e => ({ label: e.querySelector('.item')?.textContent.trim(), included: /Zahrnuté v balíku/.test(e.querySelector('.visually-hidden')?.textContent || '') }))
+          .filter(x => x.label && x.included)
+          .map(x => x.label)
+        ).catch(() => []);
+        results.push({ balik: pkg, spoluucast: ded, cena: priceMatch ? priceMatch[1].replace(/\s/g, '') : null, coverage });
+        log(`${ded} ${pkg} ->`, priceMatch ? priceMatch[1] : 'PRICE NOT FOUND');
+      }
     }
     fs.writeFileSync(`${outDir}/${profileId}-results.json`, JSON.stringify(results.map(r => ({ ...r, odporucana_suma_nehnutelnost: odporucanaSuma })), null, 2));
     await page.screenshot({ path: `${outDir}/${profileId}-offer.png`, fullPage: true });

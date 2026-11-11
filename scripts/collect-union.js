@@ -178,45 +178,71 @@ async function run(profileId) {
     await page.getByText('Pokračovať', { exact: true }).click();
     await page.waitForTimeout(2500);
     log('step5 url:', page.url());
-    // step 5: Cena poistenia a poistné riziká - select deductible 0 EUR. As of ~2026-11-01
-    // this page dropped the old binary "základné riziká" / "pridať všetky pripoistenia"
-    // toggle in favour of a proper 3-tier Klasik/Komfort/Premium package table (same
-    // pattern as the other insurers), with a coverage grid (checkmark = included) per tier.
-    await page.click('input[value="DEDUCTIBLE_0"]', { force: true });
-    await page.waitForTimeout(1200);
+    // step 5: Cena poistenia a poistné riziká. As of ~2026-11-01 this page dropped the
+    // old binary "základné riziká" / "pridať všetky pripoistenia" toggle in favour of a
+    // proper 3-tier Klasik/Komfort/Premium package table (same pattern as the other
+    // insurers), with a coverage grid (checkmark = included) per tier, and 3 deductible
+    // radios (DEDUCTIBLE_0/50/100).
+    const deductibleRadios = await page.$$eval('input[type="radio"][value^="DEDUCTIBLE_"]', (els) => els.map((e) => e.value));
+    log('deductible options:', JSON.stringify(deductibleRadios));
+
+    const results = [];
+    let prevCenas = null;
+    for (const ded of deductibleRadios) {
+      await page.click(`input[value="${ded}"]`, { force: true });
+      await page.waitForTimeout(1200);
+      const checked = await page.locator(`input[value="${ded}"]`).isChecked().catch(() => false);
+      if (!checked) throw new Error(`deductible radio "${ded}" did not end up checked`);
+      const spoluucastLabel = `${ded.replace('DEDUCTIBLE_', '')} €`;
+
+      const readTiers = () => page.$$eval('.ssp-fun-table-column-header--top', (els) => els.map((e) => {
+        const style = e.getAttribute('style') || '';
+        const m = style.match(/grid-area:\s*\d+\s*\/\s*(\d+)/);
+        return {
+          col: m ? parseInt(m[1], 10) : null,
+          name: e.querySelector('.ssp-fun-table-column-header__title')?.textContent.trim(),
+          cena: e.querySelector('.ssp-fun-table-column-header__price-value')?.textContent.replace(/\xa0|\s/g, '').replace('€', '').trim(),
+        };
+      }).filter((t) => t.name && t.col !== null));
+
+      // the table repeats its header row at the bottom too (same class minus --top) - scope to --top only
+      let tiers = await readTiers();
+      // the deductible toggle can flip to "selected" before the price table has
+      // re-rendered (confirmed: dom-male-dvorniky silently returned identical 0€/50€
+      // prices this way) - if the prices are unchanged from the previous deductible,
+      // give the page more time and re-read before accepting.
+      const cenasNow = tiers.map((t) => t.cena).join('|');
+      if (prevCenas !== null && cenasNow === prevCenas) {
+        log(`  prices unchanged from previous deductible, waiting longer and re-reading...`);
+        await page.waitForTimeout(1500);
+        tiers = await readTiers();
+      }
+      prevCenas = tiers.map((t) => t.cena).join('|');
+      log(`${spoluucastLabel} tiers:`, JSON.stringify(tiers));
+
+      const rows = await page.$$eval('.ssp-fun-table__row', (rowEls) => rowEls.map((row) => {
+        const label = row.querySelector('.ssp-fun-table-label-cell__label')?.textContent.trim();
+        const cells = Array.from(row.querySelectorAll('.ssp-fun-table-cell')).map((c) => {
+          const style = c.getAttribute('style') || '';
+          const m = style.match(/grid-area:\s*\d+\s*\/\s*(\d+)/);
+          const icon = c.querySelector('union-icon');
+          return { col: m ? parseInt(m[1], 10) : null, included: icon?.getAttribute('aria-label') === 'Zahrnuté' };
+        });
+        return { label, cells };
+      }).filter((r) => r.label));
+
+      for (const tier of tiers) {
+        results.push({
+          balik: tier.name,
+          spoluucast: spoluucastLabel,
+          cena: tier.cena,
+          coverage: rows.filter((r) => r.cells.some((c) => c.col === tier.col && c.included)).map((r) => r.label),
+        });
+      }
+    }
     await page.screenshot({ path: `${outDir}/${profileId}-step5-offer.png`, fullPage: true });
     fs.writeFileSync(`${outDir}/${profileId}-step5.html`, await page.content());
-
-    // the table repeats its header row at the bottom too (same class minus --top) - scope to --top only
-    const tiers = await page.$$eval('.ssp-fun-table-column-header--top', (els) => els.map((e) => {
-      const style = e.getAttribute('style') || '';
-      const m = style.match(/grid-area:\s*\d+\s*\/\s*(\d+)/);
-      return {
-        col: m ? parseInt(m[1], 10) : null,
-        name: e.querySelector('.ssp-fun-table-column-header__title')?.textContent.trim(),
-        cena: e.querySelector('.ssp-fun-table-column-header__price-value')?.textContent.replace(/ |\s/g, '').replace('€', '').trim(),
-      };
-    }).filter((t) => t.name && t.col !== null));
-    log('tiers:', JSON.stringify(tiers));
-
-    const rows = await page.$$eval('.ssp-fun-table__row', (rowEls) => rowEls.map((row) => {
-      const label = row.querySelector('.ssp-fun-table-label-cell__label')?.textContent.trim();
-      const cells = Array.from(row.querySelectorAll('.ssp-fun-table-cell')).map((c) => {
-        const style = c.getAttribute('style') || '';
-        const m = style.match(/grid-area:\s*\d+\s*\/\s*(\d+)/);
-        const icon = c.querySelector('union-icon');
-        return { col: m ? parseInt(m[1], 10) : null, included: icon?.getAttribute('aria-label') === 'Zahrnuté' };
-      });
-      return { label, cells };
-    }).filter((r) => r.label));
-
-    const results = tiers.map((tier) => ({
-      balik: tier.name,
-      spoluucast: '0 €',
-      cena: tier.cena,
-      coverage: rows.filter((r) => r.cells.some((c) => c.col === tier.col && c.included)).map((r) => r.label),
-    }));
-    log('results:', JSON.stringify(results.map((r) => [r.balik, r.cena, r.coverage.length])));
+    log('results:', JSON.stringify(results.map((r) => [r.balik, r.spoluucast, r.cena, r.coverage.length])));
     fs.writeFileSync(`${outDir}/${profileId}-results.json`, JSON.stringify(results.map((r) => ({ ...r, odporucana_suma_nehnutelnost: odporucanaSuma, limit: '' })), null, 2));
 
     await browser.close();
