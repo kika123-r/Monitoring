@@ -34,10 +34,12 @@ const SKUPINA2_LIMIT = { Standard: '5 000', Komfort: '7 500', Premium: '10 000' 
 const SKUPINA1_TEXT = 'Požiar, priamy úder blesku, výbuch, pád lietadla, krupobitie, tiaž snehu alebo námrazy, zosuv pôdy, zrútenie skál alebo zemín, pád stromov, stožiarov a iných predmetov, pád lavín, výbuch sopky, zemetrasenie, víchrica, atmosférické zrážky, povodeň alebo záplava, implózia, nadzvuková vlna, náraz vozidla, dym (zadymenie), voda z vodovodných zariadení, spodná voda, spätné vystúpenie vody z kanalizácie, zmrznutie vody v meračoch';
 const SKUPINA2_TEXT = 'Búrlivý vietor, nepriamy úder blesku, prepätie, podpätie alebo skrat, rozbitie skla, vandalizmus, sprejerstvo, odcudzenie, deštruktívna činnosť voľne žijúcich živočíchov, stavebný materiál, stavebné mechanizmy a náradie, vybrané veci na pozemku, náklady na odvrátenie a odpratanie škody';
 
-async function runOnePackage(profileId, packageName) {
+const DEDUCTIBLES = ['0 €', '50 €', '100 €'];
+
+async function runOnePackage(profileId, packageName, deductible) {
   const p = PROFILES[profileId];
   const outDir = '/home/user/Monitoring/insurers/wustenrot/capture';
-  const log = (...a) => console.log(`[${profileId}/${packageName}]`, ...a);
+  const log = (...a) => console.log(`[${profileId}/${packageName}/${deductible}]`, ...a);
   const browser = await chromium.launch({ executablePath: CHROME_PATH, headless: true, args: ['--disable-blink-features=AutomationControlled'] });
   const context = await browser.newContext({ viewport: { width: 1400, height: 1400 }, userAgent: UA, locale: 'sk-SK' });
   const page = await context.newPage();
@@ -168,7 +170,7 @@ async function runOnePackage(profileId, packageName) {
     await page.waitForTimeout(1000);
 
     await page.waitForSelector('text=0 €');
-    await page.getByText('0 €', { exact: true }).first().click({ force: true }); // spoluucast nehnutelnost
+    await page.getByText(deductible, { exact: true }).first().click({ force: true }); // spoluucast nehnutelnost
     await page.waitForTimeout(400);
     await page.click('button:has-text("Pokračovať")');
     await page.waitForTimeout(1000);
@@ -224,7 +226,7 @@ async function run(profileId) {
   const results = [];
 
   if (p.overCalculatorCap) {
-    const { odporucanaSuma } = await runOnePackage(profileId, 'Standard');
+    const { odporucanaSuma } = await runOnePackage(profileId, 'Standard', DEDUCTIBLES[0]);
     fs.writeFileSync(`${outDir}/${profileId}-results.json`, JSON.stringify([], null, 2));
     fs.writeFileSync(`${outDir}/${profileId}-CAPPED-NOTE.txt`,
       `Poistná suma nehnuteľnosti (${p.suma_nehnutelnost} EUR) presahuje limit online kalkulačky ` +
@@ -234,16 +236,20 @@ async function run(profileId) {
     return;
   }
 
-  for (const pkg of PACKAGES) {
-    const r = await runOnePackage(profileId, pkg);
-    results.push({
-      balik: pkg,
-      spoluucast: '0 €',
-      cena: r.cena,
-      limit: '150000',
-      coverage: [SKUPINA1_TEXT, `${SKUPINA2_TEXT} (limit ${SKUPINA2_LIMIT[pkg]} €)`, 'Zodpovednosť z vlastníctva nehnuteľnosti / domácnosti a bežného občianskeho života (150 000 €)', 'Asistenčné služby v cene poistenia'],
-      odporucana_suma_nehnutelnost: r.odporucanaSuma,
-    });
+  // the wizard restarts from scratch per package (no way to switch deductible mid-flow
+  // without re-navigating), so each deductible tier also needs its own full run
+  for (const ded of DEDUCTIBLES) {
+    for (const pkg of PACKAGES) {
+      const r = await runOnePackage(profileId, pkg, ded);
+      results.push({
+        balik: pkg,
+        spoluucast: ded,
+        cena: r.cena,
+        limit: '150000',
+        coverage: [SKUPINA1_TEXT, `${SKUPINA2_TEXT} (limit ${SKUPINA2_LIMIT[pkg]} €)`, 'Zodpovednosť z vlastníctva nehnuteľnosti / domácnosti a bežného občianskeho života (150 000 €)', 'Asistenčné služby v cene poistenia'],
+        odporucana_suma_nehnutelnost: r.odporucanaSuma,
+      });
+    }
   }
   fs.writeFileSync(`${outDir}/${profileId}-results.json`, JSON.stringify(results, null, 2));
   console.log(`[${profileId}] DONE`, JSON.stringify(results.map(r => [r.balik, r.cena])));
