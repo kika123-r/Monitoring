@@ -44,5 +44,97 @@
     ],
     "odporucana_suma_nehnutelnost": "143199",
     "limit": ""
+  },
+  {
+    "balik": "Klasik",
+    "spoluucast": "50 €",
+    "cena": "165,49",
+    "coverage": [
+      "Základné riziká",
+      "Asistenčné služby",
+      "Prírodné katastrofy",
+      "Ostatné živelné riziká"
+    ],
+    "odporucana_suma_nehnutelnost": "143199",
+    "limit": ""
+  },
+  {
+    "balik": "Komfort",
+    "spoluucast": "50 €",
+    "cena": "232,64",
+    "coverage": [
+      "Základné riziká",
+      "Asistenčné služby",
+      "Prírodné katastrofy",
+      "Ostatné živelné riziká",
+      "Škody z vody",
+      "Ľudská zlomyseľnosť"
+    ],
+    "odporucana_suma_nehnutelnost": "143199",
+    "limit": ""
+  },
+  {
+    "balik": "Premium",
+    "spoluucast": "50 €",
+    "cena": "260,34",
+    "coverage": [
+      "Základné riziká",
+      "Asistenčné služby",
+      "Prírodné katastrofy",
+      "Ostatné živelné riziká",
+      "Škody z vody",
+      "Ľudská zlomyseľnosť",
+      "Skrat",
+      "Drobnosti",
+      "Anjel"
+    ],
+    "odporucana_suma_nehnutelnost": "143199",
+    "limit": ""
+  },
+  {
+    "balik": "Klasik",
+    "spoluucast": "100 €",
+    "cena": "157,21",
+    "coverage": [
+      "Základné riziká",
+      "Asistenčné služby",
+      "Prírodné katastrofy",
+      "Ostatné živelné riziká"
+    ],
+    "odporucana_suma_nehnutelnost": "143199",
+    "limit": ""
+  },
+  {
+    "balik": "Komfort",
+    "spoluucast": "100 €",
+    "cena": "220,99",
+    "coverage": [
+      "Základné riziká",
+      "Asistenčné služby",
+      "Prírodné katastrofy",
+      "Ostatné živelné riziká",
+      "Škody z vody",
+      "Ľudská zlomyseľnosť"
+    ],
+    "odporucana_suma_nehnutelnost": "143199",
+    "limit": ""
+  },
+  {
+    "balik": "Premium",
+    "spoluucast": "100 €",
+    "cena": "247,31",
+    "coverage": [
+      "Základné riziká",
+      "Asistenčné služby",
+      "Prírodné katastrofy",
+      "Ostatné živelné riziká",
+      "Škody z vody",
+      "Ľudská zlomyseľnosť",
+      "Skrat",
+      "Drobnosti",
+      "Anjel"
+    ],
+    "odporucana_suma_nehnutelnost": "143199",
+    "limit": ""
   }
 ]
