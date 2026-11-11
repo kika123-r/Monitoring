@@ -23,7 +23,7 @@ declare -A INSURER_NAMES=(
   [kooperativa]="Kooperativa (Bezstarostný domov)"
   [union]="Union"
   [wustenrot]="Wüstenrot (W dobrom domov)"
-  [uniqa]="UNIQA"
+  [uniqa]="Uniqa"
 )
 
 rm -f data/results/*.csv
