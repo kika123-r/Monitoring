@@ -37,5 +37,83 @@
       "Asistenčné služby v cene poistenia"
     ],
     "odporucana_suma_nehnutelnost": "135800"
+  },
+  {
+    "balik": "Standard",
+    "spoluucast": "50 €",
+    "cena": "143,64",
+    "limit": "150000",
+    "coverage": [
+      "Požiar, priamy úder blesku, výbuch, pád lietadla, krupobitie, tiaž snehu alebo námrazy, zosuv pôdy, zrútenie skál alebo zemín, pád stromov, stožiarov a iných predmetov, pád lavín, výbuch sopky, zemetrasenie, víchrica, atmosférické zrážky, povodeň alebo záplava, implózia, nadzvuková vlna, náraz vozidla, dym (zadymenie), voda z vodovodných zariadení, spodná voda, spätné vystúpenie vody z kanalizácie, zmrznutie vody v meračoch",
+      "Búrlivý vietor, nepriamy úder blesku, prepätie, podpätie alebo skrat, rozbitie skla, vandalizmus, sprejerstvo, odcudzenie, deštruktívna činnosť voľne žijúcich živočíchov, stavebný materiál, stavebné mechanizmy a náradie, vybrané veci na pozemku, náklady na odvrátenie a odpratanie škody (limit 5 000 €)",
+      "Zodpovednosť z vlastníctva nehnuteľnosti / domácnosti a bežného občianskeho života (150 000 €)",
+      "Asistenčné služby v cene poistenia"
+    ],
+    "odporucana_suma_nehnutelnost": "135800"
+  },
+  {
+    "balik": "Komfort",
+    "spoluucast": "50 €",
+    "cena": "164,28",
+    "limit": "150000",
+    "coverage": [
+      "Požiar, priamy úder blesku, výbuch, pád lietadla, krupobitie, tiaž snehu alebo námrazy, zosuv pôdy, zrútenie skál alebo zemín, pád stromov, stožiarov a iných predmetov, pád lavín, výbuch sopky, zemetrasenie, víchrica, atmosférické zrážky, povodeň alebo záplava, implózia, nadzvuková vlna, náraz vozidla, dym (zadymenie), voda z vodovodných zariadení, spodná voda, spätné vystúpenie vody z kanalizácie, zmrznutie vody v meračoch",
+      "Búrlivý vietor, nepriamy úder blesku, prepätie, podpätie alebo skrat, rozbitie skla, vandalizmus, sprejerstvo, odcudzenie, deštruktívna činnosť voľne žijúcich živočíchov, stavebný materiál, stavebné mechanizmy a náradie, vybrané veci na pozemku, náklady na odvrátenie a odpratanie škody (limit 7 500 €)",
+      "Zodpovednosť z vlastníctva nehnuteľnosti / domácnosti a bežného občianskeho života (150 000 €)",
+      "Asistenčné služby v cene poistenia"
+    ],
+    "odporucana_suma_nehnutelnost": "135800"
+  },
+  {
+    "balik": "Premium",
+    "spoluucast": "50 €",
+    "cena": "183,60",
+    "limit": "150000",
+    "coverage": [
+      "Požiar, priamy úder blesku, výbuch, pád lietadla, krupobitie, tiaž snehu alebo námrazy, zosuv pôdy, zrútenie skál alebo zemín, pád stromov, stožiarov a iných predmetov, pád lavín, výbuch sopky, zemetrasenie, víchrica, atmosférické zrážky, povodeň alebo záplava, implózia, nadzvuková vlna, náraz vozidla, dym (zadymenie), voda z vodovodných zariadení, spodná voda, spätné vystúpenie vody z kanalizácie, zmrznutie vody v meračoch",
+      "Búrlivý vietor, nepriamy úder blesku, prepätie, podpätie alebo skrat, rozbitie skla, vandalizmus, sprejerstvo, odcudzenie, deštruktívna činnosť voľne žijúcich živočíchov, stavebný materiál, stavebné mechanizmy a náradie, vybrané veci na pozemku, náklady na odvrátenie a odpratanie škody (limit 10 000 €)",
+      "Zodpovednosť z vlastníctva nehnuteľnosti / domácnosti a bežného občianskeho života (150 000 €)",
+      "Asistenčné služby v cene poistenia"
+    ],
+    "odporucana_suma_nehnutelnost": "135800"
+  },
+  {
+    "balik": "Standard",
+    "spoluucast": "100 €",
+    "cena": "133,68",
+    "limit": "150000",
+    "coverage": [
+      "Požiar, priamy úder blesku, výbuch, pád lietadla, krupobitie, tiaž snehu alebo námrazy, zosuv pôdy, zrútenie skál alebo zemín, pád stromov, stožiarov a iných predmetov, pád lavín, výbuch sopky, zemetrasenie, víchrica, atmosférické zrážky, povodeň alebo záplava, implózia, nadzvuková vlna, náraz vozidla, dym (zadymenie), voda z vodovodných zariadení, spodná voda, spätné vystúpenie vody z kanalizácie, zmrznutie vody v meračoch",
+      "Búrlivý vietor, nepriamy úder blesku, prepätie, podpätie alebo skrat, rozbitie skla, vandalizmus, sprejerstvo, odcudzenie, deštruktívna činnosť voľne žijúcich živočíchov, stavebný materiál, stavebné mechanizmy a náradie, vybrané veci na pozemku, náklady na odvrátenie a odpratanie škody (limit 5 000 €)",
+      "Zodpovednosť z vlastníctva nehnuteľnosti / domácnosti a bežného občianskeho života (150 000 €)",
+      "Asistenčné služby v cene poistenia"
+    ],
+    "odporucana_suma_nehnutelnost": "135800"
+  },
+  {
+    "balik": "Komfort",
+    "spoluucast": "100 €",
+    "cena": "153,84",
+    "limit": "150000",
+    "coverage": [
+      "Požiar, priamy úder blesku, výbuch, pád lietadla, krupobitie, tiaž snehu alebo námrazy, zosuv pôdy, zrútenie skál alebo zemín, pád stromov, stožiarov a iných predmetov, pád lavín, výbuch sopky, zemetrasenie, víchrica, atmosférické zrážky, povodeň alebo záplava, implózia, nadzvuková vlna, náraz vozidla, dym (zadymenie), voda z vodovodných zariadení, spodná voda, spätné vystúpenie vody z kanalizácie, zmrznutie vody v meračoch",
+      "Búrlivý vietor, nepriamy úder blesku, prepätie, podpätie alebo skrat, rozbitie skla, vandalizmus, sprejerstvo, odcudzenie, deštruktívna činnosť voľne žijúcich živočíchov, stavebný materiál, stavebné mechanizmy a náradie, vybrané veci na pozemku, náklady na odvrátenie a odpratanie škody (limit 7 500 €)",
+      "Zodpovednosť z vlastníctva nehnuteľnosti / domácnosti a bežného občianskeho života (150 000 €)",
+      "Asistenčné služby v cene poistenia"
+    ],
+    "odporucana_suma_nehnutelnost": "135800"
+  },
+  {
+    "balik": "Premium",
+    "spoluucast": "100 €",
+    "cena": "170,88",
+    "limit": "150000",
+    "coverage": [
+      "Požiar, priamy úder blesku, výbuch, pád lietadla, krupobitie, tiaž snehu alebo námrazy, zosuv pôdy, zrútenie skál alebo zemín, pád stromov, stožiarov a iných predmetov, pád lavín, výbuch sopky, zemetrasenie, víchrica, atmosférické zrážky, povodeň alebo záplava, implózia, nadzvuková vlna, náraz vozidla, dym (zadymenie), voda z vodovodných zariadení, spodná voda, spätné vystúpenie vody z kanalizácie, zmrznutie vody v meračoch",
+      "Búrlivý vietor, nepriamy úder blesku, prepätie, podpätie alebo skrat, rozbitie skla, vandalizmus, sprejerstvo, odcudzenie, deštruktívna činnosť voľne žijúcich živočíchov, stavebný materiál, stavebné mechanizmy a náradie, vybrané veci na pozemku, náklady na odvrátenie a odpratanie škody (limit 10 000 €)",
+      "Zodpovednosť z vlastníctva nehnuteľnosti / domácnosti a bežného občianskeho života (150 000 €)",
+      "Asistenčné služby v cene poistenia"
+    ],
+    "odporucana_suma_nehnutelnost": "135800"
   }
 ]
