@@ -2,7 +2,7 @@ const { chromium } = require('/home/user/Monitoring/node_modules/playwright');
 const fs = require('fs');
 
 const CONTACT = { phone: '949414398', email: 'janko.mrkvicka@gmail.com' };
-const CHROME_PATH = '/opt/pw-browsers/chromium-1194/chrome-linux/chrome';
+const CHROME_PATH = '/opt/pw-browsers/chromium';
 
 const PROFILES = {
   'byt-bratislava': { type: 'FLAT', mestoQuery: 'Bratislava - Petržalka', mesto: 'Bratislava', ulica: 'Lietavská', cislo: '3095/9', psc: '85106', plocha: 65, rok: 1985, material: 'Panel', poschodie: 7, celkovePoschodi: 9, suma_nehnutelnost: 200000, suma_domacnost: 25000 },

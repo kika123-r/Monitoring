@@ -2,7 +2,7 @@ const { chromium } = require('/home/user/Monitoring/node_modules/playwright');
 const fs = require('fs');
 
 const CONTACT = { phone: '0949414398', email: 'janko.mrkvicka@gmail.com' };
-const CHROME_PATH = '/opt/pw-browsers/chromium-1194/chrome-linux/chrome';
+const CHROME_PATH = '/opt/pw-browsers/chromium';
 const GID = '706e98666419c22a962070061c6ef89f9ab5a8081c240becc7a90902470fddbf';
 
 const PROFILES = {

@@ -28,7 +28,7 @@ const PROFILES = {
   },
 };
 
-const CHROME_PATH = '/opt/pw-browsers/chromium-1194/chrome-linux/chrome';
+const CHROME_PATH = '/opt/pw-browsers/chromium';
 
 async function run(profileId) {
   const p = PROFILES[profileId];

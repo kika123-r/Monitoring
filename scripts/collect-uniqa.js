@@ -16,7 +16,7 @@
 const { chromium } = require('/home/user/Monitoring/node_modules/playwright');
 const fs = require('fs');
 
-const CHROME_PATH = '/opt/pw-browsers/chromium-1194/chrome-linux/chrome';
+const CHROME_PATH = '/opt/pw-browsers/chromium';
 const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36';
 const WIDGET_URL = 'https://iframe.netfinancie.sk/xform-iframe/7b2276657273696f6e223a22332e35222c226f726967696e223a2268747470733a2f2f7777772e66696e616e636e796b6f6d7061732e736b222c22736661223a226e66222c2270726f64756374223a22706f697374656e69652d646f6d6f762d646f6d61636e6f737469222c22616964223a2235366138633965643765306461222c22626964223a2268747470733a2f2f7777772e66696e616e636e796b6f6d7061732e736b222c22676964223a22303030227d/';
 
