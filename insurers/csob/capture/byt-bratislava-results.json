@@ -2,19 +2,19 @@
   {
     "balik": "Klasik",
     "spoluucast": "0 €",
-    "cena": "138,36",
+    "cena": "138,19",
     "coverage": [
       "Živelná udalosť",
       "Odcudzenie",
       "Rozbitie skla",
       "Základné asistenčné služby – peňažné plnenie"
     ],
-    "odporucana_suma_nehnutelnost": "200248"
+    "odporucana_suma_nehnutelnost": "199892"
   },
   {
     "balik": "Štandard",
     "spoluucast": "0 €",
-    "cena": "155,18",
+    "cena": "154,98",
     "coverage": [
       "Živelná udalosť",
       "Odcudzenie",
@@ -23,12 +23,12 @@
       "Skrat elektromotorov",
       "Základné asistenčné služby – peňažné plnenie"
     ],
-    "odporucana_suma_nehnutelnost": "200248"
+    "odporucana_suma_nehnutelnost": "199892"
   },
   {
     "balik": "Extra",
     "spoluucast": "0 €",
-    "cena": "190,22",
+    "cena": "189,99",
     "coverage": [
       "Živelná udalosť",
       "Odcudzenie",
@@ -39,24 +39,24 @@
       "Extra krytie poistných rizík",
       "Rozšírené asistenčné služby – peňažné plnenie"
     ],
-    "odporucana_suma_nehnutelnost": "200248"
+    "odporucana_suma_nehnutelnost": "199892"
   },
   {
     "balik": "Klasik",
     "spoluucast": "50 €",
-    "cena": "124,53",
+    "cena": "124,37",
     "coverage": [
       "Živelná udalosť",
       "Odcudzenie",
       "Rozbitie skla",
       "Základné asistenčné služby – peňažné plnenie"
     ],
-    "odporucana_suma_nehnutelnost": "200248"
+    "odporucana_suma_nehnutelnost": "199892"
   },
   {
     "balik": "Štandard",
     "spoluucast": "50 €",
-    "cena": "139,66",
+    "cena": "139,49",
     "coverage": [
       "Živelná udalosť",
       "Odcudzenie",
@@ -65,12 +65,12 @@
       "Skrat elektromotorov",
       "Základné asistenčné služby – peňažné plnenie"
     ],
-    "odporucana_suma_nehnutelnost": "200248"
+    "odporucana_suma_nehnutelnost": "199892"
   },
   {
     "balik": "Extra",
     "spoluucast": "50 €",
-    "cena": "171,20",
+    "cena": "170,99",
     "coverage": [
       "Živelná udalosť",
       "Odcudzenie",
@@ -81,24 +81,24 @@
       "Extra krytie poistných rizík",
       "Rozšírené asistenčné služby – peňažné plnenie"
     ],
-    "odporucana_suma_nehnutelnost": "200248"
+    "odporucana_suma_nehnutelnost": "199892"
   },
   {
     "balik": "Klasik",
     "spoluucast": "100 €",
-    "cena": "117,61",
+    "cena": "117,47",
     "coverage": [
       "Živelná udalosť",
       "Odcudzenie",
       "Rozbitie skla",
       "Základné asistenčné služby – peňažné plnenie"
     ],
-    "odporucana_suma_nehnutelnost": "200248"
+    "odporucana_suma_nehnutelnost": "199892"
   },
   {
     "balik": "Štandard",
     "spoluucast": "100 €",
-    "cena": "131,90",
+    "cena": "131,73",
     "coverage": [
       "Živelná udalosť",
       "Odcudzenie",
@@ -107,12 +107,12 @@
       "Skrat elektromotorov",
       "Základné asistenčné služby – peňažné plnenie"
     ],
-    "odporucana_suma_nehnutelnost": "200248"
+    "odporucana_suma_nehnutelnost": "199892"
   },
   {
     "balik": "Extra",
     "spoluucast": "100 €",
-    "cena": "161,69",
+    "cena": "161,49",
     "coverage": [
       "Živelná udalosť",
       "Odcudzenie",
@@ -123,6 +123,6 @@
       "Extra krytie poistných rizík",
       "Rozšírené asistenčné služby – peňažné plnenie"
     ],
-    "odporucana_suma_nehnutelnost": "200248"
+    "odporucana_suma_nehnutelnost": "199892"
   }
 ]
