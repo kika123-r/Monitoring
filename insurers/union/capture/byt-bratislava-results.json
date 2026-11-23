@@ -2,7 +2,7 @@
   {
     "balik": "Klasik",
     "spoluucast": "0 €",
-    "cena": "77,25",
+    "cena": "94,31",
     "coverage": [
       "Základné riziká",
       "Asistenčné služby",
@@ -10,12 +10,12 @@
       "Ostatné živelné riziká"
     ],
     "odporucana_suma_nehnutelnost": "166005",
-    "limit": ""
+    "limit": "250000"
   },
   {
     "balik": "Komfort",
     "spoluucast": "0 €",
-    "cena": "135,02",
+    "cena": "152,08",
     "coverage": [
       "Základné riziká",
       "Asistenčné služby",
@@ -25,12 +25,12 @@
       "Ľudská zlomyseľnosť"
     ],
     "odporucana_suma_nehnutelnost": "166005",
-    "limit": ""
+    "limit": "250000"
   },
   {
     "balik": "Premium",
     "spoluucast": "0 €",
-    "cena": "151,45",
+    "cena": "168,51",
     "coverage": [
       "Základné riziká",
       "Asistenčné služby",
@@ -43,12 +43,12 @@
       "Anjel"
     ],
     "odporucana_suma_nehnutelnost": "166005",
-    "limit": ""
+    "limit": "250000"
   },
   {
     "balik": "Klasik",
     "spoluucast": "50 €",
-    "cena": "70,23",
+    "cena": "87,29",
     "coverage": [
       "Základné riziká",
       "Asistenčné služby",
@@ -56,12 +56,12 @@
       "Ostatné živelné riziká"
     ],
     "odporucana_suma_nehnutelnost": "166005",
-    "limit": ""
+    "limit": "250000"
   },
   {
     "balik": "Komfort",
     "spoluucast": "50 €",
-    "cena": "122,76",
+    "cena": "139,82",
     "coverage": [
       "Základné riziká",
       "Asistenčné služby",
@@ -71,12 +71,12 @@
       "Ľudská zlomyseľnosť"
     ],
     "odporucana_suma_nehnutelnost": "166005",
-    "limit": ""
+    "limit": "250000"
   },
   {
     "balik": "Premium",
     "spoluucast": "50 €",
-    "cena": "137,71",
+    "cena": "154,77",
     "coverage": [
       "Základné riziká",
       "Asistenčné služby",
@@ -89,12 +89,12 @@
       "Anjel"
     ],
     "odporucana_suma_nehnutelnost": "166005",
-    "limit": ""
+    "limit": "250000"
   },
   {
     "balik": "Klasik",
     "spoluucast": "100 €",
-    "cena": "66,70",
+    "cena": "83,76",
     "coverage": [
       "Základné riziká",
       "Asistenčné služby",
@@ -102,12 +102,12 @@
       "Ostatné živelné riziká"
     ],
     "odporucana_suma_nehnutelnost": "166005",
-    "limit": ""
+    "limit": "250000"
   },
   {
     "balik": "Komfort",
     "spoluucast": "100 €",
-    "cena": "116,60",
+    "cena": "133,66",
     "coverage": [
       "Základné riziká",
       "Asistenčné služby",
@@ -117,12 +117,12 @@
       "Ľudská zlomyseľnosť"
     ],
     "odporucana_suma_nehnutelnost": "166005",
-    "limit": ""
+    "limit": "250000"
   },
   {
     "balik": "Premium",
     "spoluucast": "100 €",
-    "cena": "130,79",
+    "cena": "147,85",
     "coverage": [
       "Základné riziká",
       "Asistenčné služby",
@@ -135,6 +135,6 @@
       "Anjel"
     ],
     "odporucana_suma_nehnutelnost": "166005",
-    "limit": ""
+    "limit": "250000"
   }
 ]

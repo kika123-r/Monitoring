@@ -183,6 +183,35 @@ async function run(profileId) {
     // proper 3-tier Klasik/Komfort/Premium package table (same pattern as the other
     // insurers), with a coverage grid (checkmark = included) per tier, and 3 deductible
     // radios (DEDUCTIBLE_0/50/100).
+    // Zodpovednosť za škodu (liability) is OFF by default on the redesigned page: two
+    // per-tier toggles (owner + household members liability), both unchecked, plus a
+    // single shared limit selector (250 000 / 500 000 / 2 500 000 EUR, default 250 000)
+    // that covers both toggles at once. Confirmed live and cross-checked against the
+    // colleague's export: our historical convention always had both switched ON at the
+    // 250 000 EUR limit (matches every other insurer in this project, which all bundle
+    // liability into their single price), so turn both toggles on for every tier before
+    // reading any price - the 250 000 EUR limit radio is already selected by default.
+    const liabilityToggleIds = [
+      'liability-table-ownerLiability-standard', 'liability-table-householdMembersLiability-standard',
+      'liability-table-ownerLiability-comfort', 'liability-table-householdMembersLiability-comfort',
+      'liability-table-ownerLiability-complete', 'liability-table-householdMembersLiability-complete',
+    ];
+    for (const id of liabilityToggleIds) {
+      const toggle = page.locator(`#${id}`);
+      if (!(await toggle.count())) { log(`  liability toggle #${id} not found`); continue; }
+      const checked = await toggle.isChecked().catch(() => null);
+      if (checked === false) {
+        await toggle.click({ force: true });
+        await page.waitForTimeout(400);
+      }
+    }
+    await page.waitForTimeout(800);
+    for (const id of liabilityToggleIds) {
+      const stillOff = await page.locator(`#${id}`).isChecked().catch(() => null);
+      if (stillOff === false) log(`  WARNING: liability toggle #${id} did not end up checked`);
+    }
+    const LIABILITY_LIMIT = '250000';
+
     const deductibleRadios = await page.$$eval('input[type="radio"][value^="DEDUCTIBLE_"]', (els) => els.map((e) => e.value));
     log('deductible options:', JSON.stringify(deductibleRadios));
 
@@ -243,7 +272,7 @@ async function run(profileId) {
     await page.screenshot({ path: `${outDir}/${profileId}-step5-offer.png`, fullPage: true });
     fs.writeFileSync(`${outDir}/${profileId}-step5.html`, await page.content());
     log('results:', JSON.stringify(results.map((r) => [r.balik, r.spoluucast, r.cena, r.coverage.length])));
-    fs.writeFileSync(`${outDir}/${profileId}-results.json`, JSON.stringify(results.map((r) => ({ ...r, odporucana_suma_nehnutelnost: odporucanaSuma, limit: '' })), null, 2));
+    fs.writeFileSync(`${outDir}/${profileId}-results.json`, JSON.stringify(results.map((r) => ({ ...r, odporucana_suma_nehnutelnost: odporucanaSuma, limit: LIABILITY_LIMIT })), null, 2));
 
     await browser.close();
     return results;
